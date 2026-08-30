@@ -2,9 +2,6 @@ import { useMemo, useState } from "react";
 import upiQr from "../assets/upi-qr.png";
 import RegistrationPass from "./RegistrationPass";
 
-const SCRIPT_URL =
-  import.meta.env.VITE_GOOGLE_SCRIPT_URL || "";
-
 const WHATSAPP_COMMUNITY_URL =
   import.meta.env.VITE_WHATSAPP_COMMUNITY_URL || "";
 
@@ -45,12 +42,19 @@ const createParticipant = () => ({
   linkedin: "",
 });
 
-function FormField({ label, optional = false, ...inputProps }) {
+function FormField({
+  label,
+  optional = false,
+  ...inputProps
+}) {
   return (
     <label className="tez-form-field">
       <span>
         {label}
-        {optional && <small>Optional</small>}
+
+        {optional && (
+          <small>Optional</small>
+        )}
       </span>
 
       <input {...inputProps} />
@@ -58,10 +62,18 @@ function FormField({ label, optional = false, ...inputProps }) {
   );
 }
 
-function Registration({ showHeading = true }) {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [activeParticipant, setActiveParticipant] =
-    useState(0);
+function Registration({
+  showHeading = true,
+}) {
+  const [
+    currentStep,
+    setCurrentStep,
+  ] = useState(1);
+
+  const [
+    activeParticipant,
+    setActiveParticipant,
+  ] = useState(0);
 
   const [team, setTeam] = useState({
     teamName: "",
@@ -71,12 +83,18 @@ function Registration({ showHeading = true }) {
     state: "",
   });
 
-  const [participants, setParticipants] = useState([
+  const [
+    participants,
+    setParticipants,
+  ] = useState([
     createParticipant(),
     createParticipant(),
   ]);
 
-  const [accommodation, setAccommodation] = useState({
+  const [
+    accommodation,
+    setAccommodation,
+  ] = useState({
     required: false,
     people: 1,
     days: 1,
@@ -88,38 +106,76 @@ function Registration({ showHeading = true }) {
     days: 1,
   });
 
-  const [transactionId, setTransactionId] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [formMessage, setFormMessage] = useState("");
-  const [success, setSuccess] = useState(null);
-  const [upiCopied, setUpiCopied] = useState(false);
+  const [
+    transactionId,
+    setTransactionId,
+  ] = useState("");
+
+  const [
+    submitting,
+    setSubmitting,
+  ] = useState(false);
+
+  const [
+    formMessage,
+    setFormMessage,
+  ] = useState("");
+
+  const [success, setSuccess] =
+    useState(null);
+
+  const [
+    upiCopied,
+    setUpiCopied,
+  ] = useState(false);
+
+  /*
+   * Hidden bot field.
+   * Real users will never interact with it.
+   */
+  const [website, setWebsite] =
+    useState("");
 
   const costs = useMemo(() => {
     const registration =
-      REGISTRATION_FEES[team.teamSize];
+      REGISTRATION_FEES[
+        Number(team.teamSize)
+      ];
 
-    const accommodationCost = accommodation.required
-      ? Number(accommodation.people) *
-        Number(accommodation.days) *
-        100
-      : 0;
+    const accommodationCost =
+      accommodation.required
+        ? Number(
+            accommodation.people
+          ) *
+          Number(
+            accommodation.days
+          ) *
+          100
+        : 0;
 
-    const foodCost = food.required
-      ? Number(food.people) *
-        Number(food.days) *
-        100
-      : 0;
+    const foodCost =
+      food.required
+        ? Number(food.people) *
+          Number(food.days) *
+          100
+        : 0;
 
     return {
       registration,
-      accommodation: accommodationCost,
+      accommodation:
+        accommodationCost,
       food: foodCost,
+
       total:
         registration +
         accommodationCost +
         foodCost,
     };
-  }, [team.teamSize, accommodation, food]);
+  }, [
+    team.teamSize,
+    accommodation,
+    food,
+  ]);
 
   function participantLabel(index) {
     return index === 0
@@ -130,7 +186,9 @@ function Registration({ showHeading = true }) {
   function scrollToRegistration() {
     window.setTimeout(() => {
       document
-        .querySelector(".tez-stepper")
+        .querySelector(
+          ".tez-stepper"
+        )
         ?.scrollIntoView({
           behavior: "smooth",
           block: "start",
@@ -139,7 +197,8 @@ function Registration({ showHeading = true }) {
   }
 
   function changeTeamField(event) {
-    const { name, value } = event.target;
+    const { name, value } =
+      event.target;
 
     setTeam((current) => ({
       ...current,
@@ -148,7 +207,9 @@ function Registration({ showHeading = true }) {
   }
 
   function changeTeamSize(event) {
-    const newSize = Number(event.target.value);
+    const newSize = Number(
+      event.target.value
+    );
 
     setTeam((current) => ({
       ...current,
@@ -159,73 +220,121 @@ function Registration({ showHeading = true }) {
       Array.from(
         { length: newSize },
         (_, index) =>
-          current[index] || createParticipant()
+          current[index] ||
+          createParticipant()
       )
     );
 
-    setActiveParticipant((current) =>
-      Math.min(current, newSize - 1)
+    setActiveParticipant(
+      (current) =>
+        Math.min(
+          current,
+          newSize - 1
+        )
     );
 
-    setAccommodation((current) => ({
-      ...current,
-      people: Math.min(current.people, newSize),
-    }));
+    setAccommodation(
+      (current) => ({
+        ...current,
+
+        people: Math.min(
+          Number(current.people),
+          newSize
+        ),
+      })
+    );
 
     setFood((current) => ({
       ...current,
-      people: Math.min(current.people, newSize),
+
+      people: Math.min(
+        Number(current.people),
+        newSize
+      ),
     }));
   }
 
-  function changeParticipant(index, event) {
-    const { name, value } = event.target;
-
-    setParticipants((current) =>
-      current.map((participant, participantIndex) =>
-        participantIndex === index
-          ? {
-              ...participant,
-              [name]: value,
-            }
-          : participant
-      )
-    );
-  }
-
-  function copyPrimaryInstitution(index) {
-    setParticipants((current) =>
-      current.map((participant, participantIndex) =>
-        participantIndex === index
-          ? {
-              ...participant,
-              institution:
-                team.primaryInstitution,
-            }
-          : participant
-      )
-    );
-  }
-
-  function changeAccommodation(event) {
-    const { name, type, checked, value } =
+  function changeParticipant(
+    index,
+    event
+  ) {
+    const { name, value } =
       event.target;
 
-    setAccommodation((current) => ({
-      ...current,
-      [name]:
-        type === "checkbox"
-          ? checked
-          : Number(value),
-    }));
+    setParticipants(
+      (current) =>
+        current.map(
+          (
+            participant,
+            participantIndex
+          ) =>
+            participantIndex ===
+            index
+              ? {
+                  ...participant,
+                  [name]: value,
+                }
+              : participant
+        )
+    );
+  }
+
+  function copyPrimaryInstitution(
+    index
+  ) {
+    setParticipants(
+      (current) =>
+        current.map(
+          (
+            participant,
+            participantIndex
+          ) =>
+            participantIndex ===
+            index
+              ? {
+                  ...participant,
+
+                  institution:
+                    team.primaryInstitution,
+                }
+              : participant
+        )
+    );
+  }
+
+  function changeAccommodation(
+    event
+  ) {
+    const {
+      name,
+      type,
+      checked,
+      value,
+    } = event.target;
+
+    setAccommodation(
+      (current) => ({
+        ...current,
+
+        [name]:
+          type === "checkbox"
+            ? checked
+            : Number(value),
+      })
+    );
   }
 
   function changeFood(event) {
-    const { name, type, checked, value } =
-      event.target;
+    const {
+      name,
+      type,
+      checked,
+      value,
+    } = event.target;
 
     setFood((current) => ({
       ...current,
+
       [name]:
         type === "checkbox"
           ? checked
@@ -241,11 +350,13 @@ function Registration({ showHeading = true }) {
       team.state,
     ];
 
-    if (
+    const hasMissingField =
       requiredFields.some(
-        (value) => !String(value).trim()
-      )
-    ) {
+        (value) =>
+          !String(value).trim()
+      );
+
+    if (hasMissingField) {
       return "Please complete all team information.";
     }
 
@@ -258,16 +369,21 @@ function Registration({ showHeading = true }) {
       index < participants.length;
       index += 1
     ) {
-      const participant = participants[index];
+      const participant =
+        participants[index];
 
       const hasMissingField =
         REQUIRED_PARTICIPANT_FIELDS.some(
           (field) =>
-            !String(participant[field]).trim()
+            !String(
+              participant[field]
+            ).trim()
         );
 
       if (hasMissingField) {
-        setActiveParticipant(index);
+        setActiveParticipant(
+          index
+        );
 
         return `Please complete all required fields for ${participantLabel(
           index
@@ -276,13 +392,34 @@ function Registration({ showHeading = true }) {
 
       const validEmail =
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-          participant.email
+          participant.email.trim()
         );
 
       if (!validEmail) {
-        setActiveParticipant(index);
+        setActiveParticipant(
+          index
+        );
 
         return `Please enter a valid email address for ${participantLabel(
+          index
+        )}.`;
+      }
+
+      const phoneDigits =
+        participant.phone.replace(
+          /\D/g,
+          ""
+        );
+
+      if (
+        phoneDigits.length < 7 ||
+        phoneDigits.length > 15
+      ) {
+        setActiveParticipant(
+          index
+        );
+
+        return `Please enter a valid phone number for ${participantLabel(
           index
         )}.`;
       }
@@ -294,22 +431,26 @@ function Registration({ showHeading = true }) {
   function validateRequirementsStep() {
     if (
       accommodation.required &&
-      Number(accommodation.people) >
-        team.teamSize
+      Number(
+        accommodation.people
+      ) > Number(team.teamSize)
     ) {
       return "Accommodation participants cannot exceed the team size.";
     }
 
     if (
       accommodation.required &&
-      Number(accommodation.days) < 1
+      Number(
+        accommodation.days
+      ) < 1
     ) {
       return "Enter the required number of accommodation days.";
     }
 
     if (
       food.required &&
-      Number(food.people) > team.teamSize
+      Number(food.people) >
+        Number(team.teamSize)
     ) {
       return "Food participants cannot exceed the team size.";
     }
@@ -319,6 +460,25 @@ function Registration({ showHeading = true }) {
       Number(food.days) < 1
     ) {
       return "Enter the required number of food days.";
+    }
+
+    return "";
+  }
+
+  function validatePaymentStep() {
+    const cleanedTransactionId =
+      transactionId.trim();
+
+    if (!cleanedTransactionId) {
+      return "Please enter the Transaction ID or UTR.";
+    }
+
+    if (
+      !/^[A-Za-z0-9._/-]{6,80}$/.test(
+        cleanedTransactionId
+      )
+    ) {
+      return "Please enter a valid Transaction ID or UTR.";
     }
 
     return "";
@@ -337,11 +497,8 @@ function Registration({ showHeading = true }) {
       return validateRequirementsStep();
     }
 
-    if (
-      currentStep === 4 &&
-      !transactionId.trim()
-    ) {
-      return "Please enter the Transaction ID or UTR.";
+    if (currentStep === 4) {
+      return validatePaymentStep();
     }
 
     return "";
@@ -358,19 +515,27 @@ function Registration({ showHeading = true }) {
       validateCurrentStep();
 
     if (validationMessage) {
-      setFormMessage(validationMessage);
+      setFormMessage(
+        validationMessage
+      );
+
       scrollToRegistration();
+
       return;
     }
 
     if (currentStep < 4) {
-      moveToStep(currentStep + 1);
+      moveToStep(
+        currentStep + 1
+      );
     }
   }
 
   function goBack() {
     if (currentStep > 1) {
-      moveToStep(currentStep - 1);
+      moveToStep(
+        currentStep - 1
+      );
     }
   }
 
@@ -380,7 +545,9 @@ function Registration({ showHeading = true }) {
     }
 
     try {
-      await navigator.clipboard.writeText(UPI_ID);
+      await navigator.clipboard.writeText(
+        UPI_ID
+      );
 
       setUpiCopied(true);
 
@@ -394,7 +561,9 @@ function Registration({ showHeading = true }) {
     }
   }
 
-  async function handleSubmit(event) {
+  async function handleSubmit(
+    event
+  ) {
     event.preventDefault();
 
     if (currentStep < 4) {
@@ -408,109 +577,192 @@ function Registration({ showHeading = true }) {
       validateCurrentStep();
 
     if (validationMessage) {
-      setFormMessage(validationMessage);
-      scrollToRegistration();
-      return;
-    }
-
-    if (!SCRIPT_URL) {
       setFormMessage(
-        "Google Apps Script is not connected yet. Your form data has not been submitted."
+        validationMessage
       );
+
+      scrollToRegistration();
+
       return;
     }
 
     const payload = {
-      teamName: team.teamName.trim(),
-      teamSize: Number(team.teamSize),
+      teamName:
+        team.teamName.trim(),
+
+      teamSize:
+        Number(team.teamSize),
+
       primaryInstitution:
         team.primaryInstitution.trim(),
+
       city: team.city.trim(),
+
       state: team.state.trim(),
 
-      participants: participants.map(
-        (participant, index) => ({
-          role: participantLabel(index),
-          fullName: participant.fullName.trim(),
-          email: participant.email.trim(),
-          phone: participant.phone.trim(),
-          institution:
-            participant.institution.trim(),
-          courseProgramme:
-            participant.courseProgramme.trim(),
-          departmentBranch:
-            participant.departmentBranch.trim(),
-          yearSemester:
-            participant.yearSemester.trim(),
-          github: participant.github.trim(),
-          linkedin: participant.linkedin.trim(),
-        })
-      ),
+      participants:
+        participants.map(
+          (
+            participant,
+            index
+          ) => ({
+            role:
+              participantLabel(
+                index
+              ),
+
+            fullName:
+              participant.fullName.trim(),
+
+            email:
+              participant.email.trim(),
+
+            phone:
+              participant.phone.trim(),
+
+            institution:
+              participant.institution.trim(),
+
+            courseProgramme:
+              participant.courseProgramme.trim(),
+
+            departmentBranch:
+              participant.departmentBranch.trim(),
+
+            yearSemester:
+              participant.yearSemester.trim(),
+
+            github:
+              participant.github.trim(),
+
+            linkedin:
+              participant.linkedin.trim(),
+          })
+        ),
 
       accommodation: {
-        required: accommodation.required,
-        people: accommodation.required
-          ? Number(accommodation.people)
-          : 0,
-        days: accommodation.required
-          ? Number(accommodation.days)
-          : 0,
+        required:
+          accommodation.required,
+
+        people:
+          accommodation.required
+            ? Number(
+                accommodation.people
+              )
+            : 0,
+
+        days:
+          accommodation.required
+            ? Number(
+                accommodation.days
+              )
+            : 0,
       },
 
       food: {
-        required: food.required,
-        people: food.required
-          ? Number(food.people)
-          : 0,
-        days: food.required
-          ? Number(food.days)
-          : 0,
+        required:
+          food.required,
+
+        people:
+          food.required
+            ? Number(food.people)
+            : 0,
+
+        days:
+          food.required
+            ? Number(food.days)
+            : 0,
       },
 
-      transactionId: transactionId.trim(),
+      transactionId:
+        transactionId.trim(),
+
+      website,
     };
 
     try {
       setSubmitting(true);
 
-      const body = new URLSearchParams();
-      body.set("payload", JSON.stringify(payload));
+      /*
+       * The browser now sends data
+       * only to the Vercel function.
+       *
+       * The Apps Script URL and secret
+       * are never sent to the browser.
+       */
+      const response =
+        await fetch(
+          "/api/register",
+          {
+            method: "POST",
 
-      const response = await fetch(SCRIPT_URL, {
-        method: "POST",
-        body,
-      });
+            headers: {
+              "Content-Type":
+                "application/json",
+            },
 
-      const result = await response.json();
+            body:
+              JSON.stringify(
+                payload
+              ),
+          }
+        );
 
-      if (!result.success) {
+      const result =
+        await response
+          .json()
+          .catch(() => ({
+            success: false,
+
+            message:
+              "The registration service returned an invalid response.",
+          }));
+
+      if (
+        !response.ok ||
+        !result.success
+      ) {
         throw new Error(
           result.message ||
             "Registration could not be submitted."
         );
       }
 
-      if (!result.registrationId) {
+      if (
+        !result.registrationId
+      ) {
         throw new Error(
           "The registration was received, but no registration ID was returned. Please contact the organizing team before submitting again."
         );
       }
 
       setSuccess({
-        teamName: team.teamName,
-        teamSize: Number(team.teamSize),
-        registrationId: result.registrationId,
+        teamName:
+          team.teamName.trim(),
+
+        teamSize:
+          Number(
+            team.teamSize
+          ),
+
+        registrationId:
+          result.registrationId,
+
         totalAmount:
-          result.totalAmount ?? costs.total,
+          result.totalAmount ??
+          costs.total,
+
         paymentStatus:
           result.paymentStatus ||
           "Pending Verification",
       });
     } catch (error) {
       setFormMessage(
-        error.message ||
+        error?.message ||
           "Registration could not be submitted. Please try again."
       );
+
+      scrollToRegistration();
     } finally {
       setSubmitting(false);
     }
@@ -531,25 +783,41 @@ function Registration({ showHeading = true }) {
             Registration Submitted
           </p>
 
-          <h2>Thank you, {success.teamName}.</h2>
+          <h2>
+            Thank you,{" "}
+            {success.teamName}.
+          </h2>
 
           <p>
-            Your payment has been submitted for
-            manual verification.
+            Your payment has been
+            submitted for manual
+            verification.
           </p>
 
           <RegistrationPass
-            registrationId={success.registrationId}
-            teamName={success.teamName}
-            teamSize={success.teamSize}
-            totalAmount={success.totalAmount}
-            paymentStatus={success.paymentStatus}
+            registrationId={
+              success.registrationId
+            }
+            teamName={
+              success.teamName
+            }
+            teamSize={
+              success.teamSize
+            }
+            totalAmount={
+              success.totalAmount
+            }
+            paymentStatus={
+              success.paymentStatus
+            }
           />
 
           {WHATSAPP_COMMUNITY_URL ? (
             <a
               className="tez-whatsapp-button"
-              href={WHATSAPP_COMMUNITY_URL}
+              href={
+                WHATSAPP_COMMUNITY_URL
+              }
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -561,7 +829,8 @@ function Registration({ showHeading = true }) {
               type="button"
               disabled
             >
-              WhatsApp Community, Coming Soon
+              WhatsApp Community,
+              Coming Soon
             </button>
           )}
         </div>
@@ -570,7 +839,9 @@ function Registration({ showHeading = true }) {
   }
 
   const participant =
-    participants[activeParticipant];
+    participants[
+      activeParticipant
+    ];
 
   return (
     <section
@@ -588,7 +859,9 @@ function Registration({ showHeading = true }) {
               Registration
             </p>
 
-            <h2>Register your team.</h2>
+            <h2>
+              Register your team.
+            </h2>
           </div>
         </div>
       )}
@@ -597,33 +870,86 @@ function Registration({ showHeading = true }) {
         className="tez-registration-form"
         onSubmit={handleSubmit}
       >
+        {/*
+         * Honeypot field.
+         * Keep this hidden field.
+         */}
+        <input
+          type="text"
+          name="website"
+          value={website}
+          onChange={(event) =>
+            setWebsite(
+              event.target.value
+            )
+          }
+          tabIndex="-1"
+          autoComplete="off"
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            left: "-10000px",
+            top: "auto",
+            width: "1px",
+            height: "1px",
+            overflow: "hidden",
+            opacity: 0,
+            pointerEvents: "none",
+          }}
+        />
+
         <div className="tez-stepper">
-          {STEPS.map((step) => (
-            <button
-              type="button"
-              key={step.number}
-              className={[
-                "tez-step-button",
-                currentStep === step.number
-                  ? "is-active"
-                  : "",
-                currentStep > step.number
-                  ? "is-complete"
-                  : "",
-              ].join(" ")}
-              disabled={step.number > currentStep}
-              onClick={() =>
-                moveToStep(step.number)
-              }
-            >
-              <span>{step.number}</span>
-              <strong>{step.label}</strong>
-            </button>
-          ))}
+          {STEPS.map((step) => {
+            const isActive =
+              currentStep ===
+              step.number;
+
+            const isComplete =
+              currentStep >
+              step.number;
+
+            return (
+              <button
+                type="button"
+                key={step.number}
+                className={[
+                  "tez-step-button",
+
+                  isActive
+                    ? "is-active"
+                    : "",
+
+                  isComplete
+                    ? "is-complete"
+                    : "",
+                ].join(" ")}
+                disabled={
+                  step.number >
+                  currentStep
+                }
+                onClick={() =>
+                  moveToStep(
+                    step.number
+                  )
+                }
+              >
+                <span>
+                  {step.number}
+                </span>
+
+                <strong>
+                  {step.label}
+                </strong>
+              </button>
+            );
+          })}
         </div>
 
         {formMessage && (
-          <p className="tez-form-message">
+          <p
+            className="tez-form-message"
+            role="alert"
+          >
             {formMessage}
           </p>
         )}
@@ -631,28 +957,43 @@ function Registration({ showHeading = true }) {
         <div className="tez-wizard-shell">
           {currentStep === 1 && (
             <fieldset className="tez-form-block">
-              <legend>Team Information</legend>
+              <legend>
+                Team Information
+              </legend>
 
               <p className="tez-step-description">
-                Start with the basic information
-                about your team.
+                Start with the basic
+                information about your
+                team.
               </p>
 
               <div className="tez-form-grid">
                 <FormField
                   label="Team Name"
                   name="teamName"
-                  value={team.teamName}
-                  onChange={changeTeamField}
+                  value={
+                    team.teamName
+                  }
+                  onChange={
+                    changeTeamField
+                  }
+                  maxLength={80}
                   required
                 />
 
                 <label className="tez-form-field">
-                  <span>Team Size</span>
+                  <span>
+                    Team Size
+                  </span>
 
                   <select
-                    value={team.teamSize}
-                    onChange={changeTeamSize}
+                    name="teamSize"
+                    value={
+                      team.teamSize
+                    }
+                    onChange={
+                      changeTeamSize
+                    }
                   >
                     <option value={2}>
                       2 Members
@@ -671,8 +1012,13 @@ function Registration({ showHeading = true }) {
                 <FormField
                   label="Primary Institution"
                   name="primaryInstitution"
-                  value={team.primaryInstitution}
-                  onChange={changeTeamField}
+                  value={
+                    team.primaryInstitution
+                  }
+                  onChange={
+                    changeTeamField
+                  }
+                  maxLength={150}
                   required
                 />
 
@@ -680,7 +1026,10 @@ function Registration({ showHeading = true }) {
                   label="City"
                   name="city"
                   value={team.city}
-                  onChange={changeTeamField}
+                  onChange={
+                    changeTeamField
+                  }
+                  maxLength={80}
                   required
                 />
 
@@ -688,7 +1037,10 @@ function Registration({ showHeading = true }) {
                   label="State"
                   name="state"
                   value={team.state}
-                  onChange={changeTeamField}
+                  onChange={
+                    changeTeamField
+                  }
+                  maxLength={80}
                   required
                 />
               </div>
@@ -698,30 +1050,42 @@ function Registration({ showHeading = true }) {
           {currentStep === 2 && (
             <div className="tez-participant-step">
               <div className="tez-member-tabs">
-                {participants.map((_, index) => (
-                  <button
-                    type="button"
-                    key={index}
-                    className={
-                      activeParticipant === index
-                        ? "is-active"
-                        : ""
-                    }
-                    onClick={() => {
-                      setActiveParticipant(index);
-                      setFormMessage("");
-                    }}
-                  >
-                    <span>
-                      {String(index + 1).padStart(
-                        2,
-                        "0"
-                      )}
-                    </span>
+                {participants.map(
+                  (_, index) => (
+                    <button
+                      type="button"
+                      key={index}
+                      className={
+                        activeParticipant ===
+                        index
+                          ? "is-active"
+                          : ""
+                      }
+                      onClick={() => {
+                        setActiveParticipant(
+                          index
+                        );
 
-                    {participantLabel(index)}
-                  </button>
-                ))}
+                        setFormMessage(
+                          ""
+                        );
+                      }}
+                    >
+                      <span>
+                        {String(
+                          index + 1
+                        ).padStart(
+                          2,
+                          "0"
+                        )}
+                      </span>
+
+                      {participantLabel(
+                        index
+                      )}
+                    </button>
+                  )
+                )}
               </div>
 
               <article className="tez-active-participant">
@@ -729,7 +1093,9 @@ function Registration({ showHeading = true }) {
                   <div>
                     <span>
                       Participant{" "}
-                      {activeParticipant + 1} of{" "}
+                      {activeParticipant +
+                        1}{" "}
+                      of{" "}
                       {team.teamSize}
                     </span>
 
@@ -748,7 +1114,8 @@ function Registration({ showHeading = true }) {
                       )
                     }
                   >
-                    Use Primary Institution
+                    Use Primary
+                    Institution
                   </button>
                 </header>
 
@@ -756,13 +1123,18 @@ function Registration({ showHeading = true }) {
                   <FormField
                     label="Full Name"
                     name="fullName"
-                    value={participant.fullName}
-                    onChange={(event) =>
+                    value={
+                      participant.fullName
+                    }
+                    onChange={(
+                      event
+                    ) =>
                       changeParticipant(
                         activeParticipant,
                         event
                       )
                     }
+                    maxLength={100}
                     required
                   />
 
@@ -770,13 +1142,19 @@ function Registration({ showHeading = true }) {
                     label="Email Address"
                     name="email"
                     type="email"
-                    value={participant.email}
-                    onChange={(event) =>
+                    value={
+                      participant.email
+                    }
+                    onChange={(
+                      event
+                    ) =>
                       changeParticipant(
                         activeParticipant,
                         event
                       )
                     }
+                    maxLength={254}
+                    autoComplete="email"
                     required
                   />
 
@@ -784,26 +1162,38 @@ function Registration({ showHeading = true }) {
                     label="Phone Number"
                     name="phone"
                     type="tel"
-                    value={participant.phone}
-                    onChange={(event) =>
+                    value={
+                      participant.phone
+                    }
+                    onChange={(
+                      event
+                    ) =>
                       changeParticipant(
                         activeParticipant,
                         event
                       )
                     }
+                    maxLength={20}
+                    inputMode="tel"
+                    autoComplete="tel"
                     required
                   />
 
                   <FormField
                     label="Institution"
                     name="institution"
-                    value={participant.institution}
-                    onChange={(event) =>
+                    value={
+                      participant.institution
+                    }
+                    onChange={(
+                      event
+                    ) =>
                       changeParticipant(
                         activeParticipant,
                         event
                       )
                     }
+                    maxLength={150}
                     required
                   />
 
@@ -813,12 +1203,15 @@ function Registration({ showHeading = true }) {
                     value={
                       participant.courseProgramme
                     }
-                    onChange={(event) =>
+                    onChange={(
+                      event
+                    ) =>
                       changeParticipant(
                         activeParticipant,
                         event
                       )
                     }
+                    maxLength={120}
                     required
                   />
 
@@ -828,12 +1221,15 @@ function Registration({ showHeading = true }) {
                     value={
                       participant.departmentBranch
                     }
-                    onChange={(event) =>
+                    onChange={(
+                      event
+                    ) =>
                       changeParticipant(
                         activeParticipant,
                         event
                       )
                     }
+                    maxLength={120}
                     required
                   />
 
@@ -843,12 +1239,15 @@ function Registration({ showHeading = true }) {
                     value={
                       participant.yearSemester
                     }
-                    onChange={(event) =>
+                    onChange={(
+                      event
+                    ) =>
                       changeParticipant(
                         activeParticipant,
                         event
                       )
                     }
+                    maxLength={60}
                     required
                   />
                 </div>
@@ -863,13 +1262,19 @@ function Registration({ showHeading = true }) {
                       label="GitHub Profile"
                       name="github"
                       type="url"
-                      value={participant.github}
-                      onChange={(event) =>
+                      value={
+                        participant.github
+                      }
+                      onChange={(
+                        event
+                      ) =>
                         changeParticipant(
                           activeParticipant,
                           event
                         )
                       }
+                      maxLength={300}
+                      placeholder="https://github.com/username"
                       optional
                     />
 
@@ -877,13 +1282,19 @@ function Registration({ showHeading = true }) {
                       label="LinkedIn Profile"
                       name="linkedin"
                       type="url"
-                      value={participant.linkedin}
-                      onChange={(event) =>
+                      value={
+                        participant.linkedin
+                      }
+                      onChange={(
+                        event
+                      ) =>
                         changeParticipant(
                           activeParticipant,
                           event
                         )
                       }
+                      maxLength={300}
+                      placeholder="https://linkedin.com/in/username"
                       optional
                     />
                   </div>
@@ -893,11 +1304,13 @@ function Registration({ showHeading = true }) {
                   <button
                     type="button"
                     disabled={
-                      activeParticipant === 0
+                      activeParticipant ===
+                      0
                     }
                     onClick={() =>
                       setActiveParticipant(
-                        (current) => current - 1
+                        (current) =>
+                          current - 1
                       )
                     }
                   >
@@ -908,11 +1321,13 @@ function Registration({ showHeading = true }) {
                     type="button"
                     disabled={
                       activeParticipant ===
-                      participants.length - 1
+                      participants.length -
+                        1
                     }
                     onClick={() =>
                       setActiveParticipant(
-                        (current) => current + 1
+                        (current) =>
+                          current + 1
                       )
                     }
                   >
@@ -940,16 +1355,23 @@ function Registration({ showHeading = true }) {
                     />
 
                     <span>
-                      Accommodation required
+                      Accommodation
+                      required
                     </span>
                   </label>
 
-                  <p>₹100 per person per day</p>
+                  <p>
+                    ₹100 per person
+                    per day
+                  </p>
 
                   {accommodation.required && (
                     <div className="tez-extra-fields">
                       <label className="tez-form-field">
-                        <span>Number of People</span>
+                        <span>
+                          Number of
+                          People
+                        </span>
 
                         <select
                           name="people"
@@ -962,18 +1384,33 @@ function Registration({ showHeading = true }) {
                         >
                           {Array.from(
                             {
-                              length: team.teamSize,
+                              length:
+                                Number(
+                                  team.teamSize
+                                ),
                             },
-                            (_, index) =>
+
+                            (
+                              _,
+                              index
+                            ) =>
                               index + 1
-                          ).map((number) => (
-                            <option
-                              value={number}
-                              key={number}
-                            >
-                              {number}
-                            </option>
-                          ))}
+                          ).map(
+                            (
+                              number
+                            ) => (
+                              <option
+                                value={
+                                  number
+                                }
+                                key={
+                                  number
+                                }
+                              >
+                                {number}
+                              </option>
+                            )
+                          )}
                         </select>
                       </label>
 
@@ -982,10 +1419,14 @@ function Registration({ showHeading = true }) {
                         name="days"
                         type="number"
                         min="1"
-                        value={accommodation.days}
+                        max="30"
+                        value={
+                          accommodation.days
+                        }
                         onChange={
                           changeAccommodation
                         }
+                        required
                       />
                     </div>
                   )}
@@ -996,39 +1437,70 @@ function Registration({ showHeading = true }) {
                     <input
                       type="checkbox"
                       name="required"
-                      checked={food.required}
-                      onChange={changeFood}
+                      checked={
+                        food.required
+                      }
+                      onChange={
+                        changeFood
+                      }
                     />
 
-                    <span>Food required</span>
+                    <span>
+                      Food required
+                    </span>
                   </label>
 
-                  <p>₹100 per person per day</p>
+                  <p>
+                    ₹100 per person
+                    per day
+                  </p>
 
                   {food.required && (
                     <div className="tez-extra-fields">
                       <label className="tez-form-field">
-                        <span>Number of People</span>
+                        <span>
+                          Number of
+                          People
+                        </span>
 
                         <select
                           name="people"
-                          value={food.people}
-                          onChange={changeFood}
+                          value={
+                            food.people
+                          }
+                          onChange={
+                            changeFood
+                          }
                         >
                           {Array.from(
                             {
-                              length: team.teamSize,
+                              length:
+                                Number(
+                                  team.teamSize
+                                ),
                             },
-                            (_, index) =>
+
+                            (
+                              _,
+                              index
+                            ) =>
                               index + 1
-                          ).map((number) => (
-                            <option
-                              value={number}
-                              key={number}
-                            >
-                              {number}
-                            </option>
-                          ))}
+                          ).map(
+                            (
+                              number
+                            ) => (
+                              <option
+                                value={
+                                  number
+                                }
+                                key={
+                                  number
+                                }
+                              >
+                                {number}
+                              </option>
+                            )
+                          )}
                         </select>
                       </label>
 
@@ -1037,8 +1509,14 @@ function Registration({ showHeading = true }) {
                         name="days"
                         type="number"
                         min="1"
-                        value={food.days}
-                        onChange={changeFood}
+                        max="30"
+                        value={
+                          food.days
+                        }
+                        onChange={
+                          changeFood
+                        }
+                        required
                       />
                     </div>
                   )}
@@ -1051,27 +1529,49 @@ function Registration({ showHeading = true }) {
                 </p>
 
                 <div>
-                  <span>Team Registration</span>
+                  <span>
+                    Team Registration
+                  </span>
+
                   <strong>
-                    ₹{costs.registration}
+                    ₹
+                    {
+                      costs.registration
+                    }
                   </strong>
                 </div>
 
                 <div>
-                  <span>Accommodation</span>
+                  <span>
+                    Accommodation
+                  </span>
+
                   <strong>
-                    ₹{costs.accommodation}
+                    ₹
+                    {
+                      costs.accommodation
+                    }
                   </strong>
                 </div>
 
                 <div>
-                  <span>Food</span>
-                  <strong>₹{costs.food}</strong>
+                  <span>
+                    Food
+                  </span>
+
+                  <strong>
+                    ₹{costs.food}
+                  </strong>
                 </div>
 
                 <div className="tez-total-row">
-                  <span>Total</span>
-                  <strong>₹{costs.total}</strong>
+                  <span>
+                    Total
+                  </span>
+
+                  <strong>
+                    ₹{costs.total}
+                  </strong>
                 </div>
               </section>
             </div>
@@ -1085,38 +1585,66 @@ function Registration({ showHeading = true }) {
                 </p>
 
                 <div className="tez-review-row">
-                  <span>Team</span>
-                  <strong>{team.teamName}</strong>
-                </div>
+                  <span>
+                    Team
+                  </span>
 
-                <div className="tez-review-row">
-                  <span>Team Size</span>
                   <strong>
-                    {team.teamSize} Members
+                    {team.teamName}
                   </strong>
                 </div>
 
                 <div className="tez-review-row">
-                  <span>Institution</span>
+                  <span>
+                    Team Size
+                  </span>
+
                   <strong>
-                    {team.primaryInstitution}
+                    {team.teamSize}{" "}
+                    Members
+                  </strong>
+                </div>
+
+                <div className="tez-review-row">
+                  <span>
+                    Institution
+                  </span>
+
+                  <strong>
+                    {
+                      team.primaryInstitution
+                    }
                   </strong>
                 </div>
 
                 <div className="tez-review-members">
-                  <span>Participants</span>
+                  <span>
+                    Participants
+                  </span>
 
                   {participants.map(
-                    (member, index) => (
-                      <div key={index}>
+                    (
+                      member,
+                      index
+                    ) => (
+                      <div
+                        key={index}
+                      >
                         <strong>
-                          {participantLabel(index)}
+                          {participantLabel(
+                            index
+                          )}
                         </strong>
 
                         <p>
-                          {member.fullName}
+                          {
+                            member.fullName
+                          }
+
                           <small>
-                            {member.email}
+                            {
+                              member.email
+                            }
                           </small>
                         </p>
                       </div>
@@ -1125,7 +1653,10 @@ function Registration({ showHeading = true }) {
                 </div>
 
                 <div className="tez-review-row">
-                  <span>Accommodation</span>
+                  <span>
+                    Accommodation
+                  </span>
+
                   <strong>
                     {accommodation.required
                       ? `${accommodation.people} people, ${accommodation.days} days`
@@ -1134,7 +1665,10 @@ function Registration({ showHeading = true }) {
                 </div>
 
                 <div className="tez-review-row">
-                  <span>Food</span>
+                  <span>
+                    Food
+                  </span>
+
                   <strong>
                     {food.required
                       ? `${food.people} people, ${food.days} days`
@@ -1143,8 +1677,13 @@ function Registration({ showHeading = true }) {
                 </div>
 
                 <div className="tez-review-row tez-review-total">
-                  <span>Total Amount</span>
-                  <strong>₹{costs.total}</strong>
+                  <span>
+                    Total Amount
+                  </span>
+
+                  <strong>
+                    ₹{costs.total}
+                  </strong>
                 </div>
               </section>
 
@@ -1154,61 +1693,76 @@ function Registration({ showHeading = true }) {
                 </p>
 
                 <div className="tez-payment-total">
-                  <span>Amount to Pay</span>
-                  <strong>₹{costs.total}</strong>
+                  <span>
+                    Amount to Pay
+                  </span>
+
+                  <strong>
+                    ₹{costs.total}
+                  </strong>
                 </div>
 
                 <div className="tez-qr-container">
-                <img
+                  <img
                     src={upiQr}
                     alt="TEZHACK 2026 UPI payment QR code"
-                />
+                  />
                 </div>
 
                 <div className="tez-upi-id-box">
-                    <span>UPI ID</span>
+                  <span>
+                    UPI ID
+                  </span>
 
-                    <div className="tez-upi-copy-row">
-                        <code>
-                        {UPI_ID || "To Be Added"}
-                        </code>
+                  <div className="tez-upi-copy-row">
+                    <code>
+                      {UPI_ID ||
+                        "To Be Added"}
+                    </code>
 
-                        <button
-                        type="button"
-                        onClick={copyUpiId}
-                        disabled={!UPI_ID}
-                        >
-                        {upiCopied ? "Copied" : "Copy"}
-                        </button>
-                    </div>
-                    </div>
+                    <button
+                      type="button"
+                      onClick={
+                        copyUpiId
+                      }
+                      disabled={
+                        !UPI_ID
+                      }
+                    >
+                      {upiCopied
+                        ? "Copied"
+                        : "Copy"}
+                    </button>
+                  </div>
+                </div>
 
                 <FormField
                   label="Transaction ID / UTR"
                   name="transactionId"
-                  value={transactionId}
-                  onChange={(event) =>
+                  value={
+                    transactionId
+                  }
+                  onChange={(
+                    event
+                  ) =>
                     setTransactionId(
-                      event.target.value
+                      event.target
+                        .value
                     )
                   }
+                  maxLength={80}
+                  autoComplete="off"
                   required
                 />
 
                 <p className="tez-payment-note">
-                  Payment will be marked as Pending
-                  Verification and manually checked
-                  by the organizing team.
+                  Payment will be marked
+                  as Pending Verification
+                  and manually checked by
+                  the organizing team.
                 </p>
               </section>
             </div>
-          )}
-
-          {currentStep === 4 && !SCRIPT_URL && (
-            <p className="tez-setup-message">
-              Google Apps Script endpoint is not
-              connected yet.
-            </p>
           )}
         </div>
 
@@ -1217,14 +1771,22 @@ function Registration({ showHeading = true }) {
             className="tez-back-button"
             type="button"
             onClick={goBack}
-            disabled={currentStep === 1}
+            disabled={
+              currentStep === 1 ||
+              submitting
+            }
           >
             Back
           </button>
 
           <div className="tez-live-total">
-            <span>Current Total</span>
-            <strong>₹{costs.total}</strong>
+            <span>
+              Current Total
+            </span>
+
+            <strong>
+              ₹{costs.total}
+            </strong>
           </div>
 
           {currentStep < 4 ? (
@@ -1232,6 +1794,7 @@ function Registration({ showHeading = true }) {
               className="tez-continue-button"
               type="button"
               onClick={goNext}
+              disabled={submitting}
             >
               Continue
             </button>
