@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import upiQr from "../assets/upi-qr.png";
+import RegistrationPass from "./RegistrationPass";
 
 const SCRIPT_URL =
   import.meta.env.VITE_GOOGLE_SCRIPT_URL || "";
@@ -373,25 +374,25 @@ function Registration() {
     }
   }
 
-async function copyUpiId() {
-  if (!UPI_ID) {
-    return;
+  async function copyUpiId() {
+    if (!UPI_ID) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(UPI_ID);
+
+      setUpiCopied(true);
+
+      window.setTimeout(() => {
+        setUpiCopied(false);
+      }, 1800);
+    } catch {
+      setFormMessage(
+        "The UPI ID could not be copied. Please copy it manually."
+      );
+    }
   }
-
-  try {
-    await navigator.clipboard.writeText(UPI_ID);
-
-    setUpiCopied(true);
-
-    window.setTimeout(() => {
-      setUpiCopied(false);
-    }, 1800);
-  } catch {
-    setFormMessage(
-      "The UPI ID could not be copied. Please copy it manually."
-    );
-  }
-}
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -489,8 +490,15 @@ async function copyUpiId() {
         );
       }
 
+      if (!result.registrationId) {
+        throw new Error(
+          "The registration was received, but no registration ID was returned. Please contact the organizing team before submitting again."
+        );
+      }
+
       setSuccess({
         teamName: team.teamName,
+        teamSize: Number(team.teamSize),
         registrationId: result.registrationId,
         totalAmount:
           result.totalAmount ?? costs.total,
@@ -530,62 +538,32 @@ async function copyUpiId() {
             manual verification.
           </p>
 
-          <dl>
-            <div>
-              <dt>Team Name</dt>
-              <dd>{success.teamName}</dd>
-            </div>
-
-            <div>
-              <dt>Registration ID</dt>
-              <dd>{success.registrationId}</dd>
-            </div>
-
-            <div>
-              <dt>Event Dates</dt>
-              <dd>
-                4, 5 and 6 September 2026
-              </dd>
-            </div>
-
-            <div>
-              <dt>Venue</dt>
-              <dd>
-                CSE Building, Tezpur University
-              </dd>
-            </div>
-
-            <div>
-              <dt>Total Amount</dt>
-              <dd>₹{success.totalAmount}</dd>
-            </div>
-
-            <div>
-              <dt>Payment Status</dt>
-              <dd className="tez-pending-status">
-                {success.paymentStatus}
-              </dd>
-            </div>
-          </dl>
+          <RegistrationPass
+            registrationId={success.registrationId}
+            teamName={success.teamName}
+            teamSize={success.teamSize}
+            totalAmount={success.totalAmount}
+            paymentStatus={success.paymentStatus}
+          />
 
           {WHATSAPP_COMMUNITY_URL ? (
-                <a
-                    className="tez-whatsapp-button"
-                    href={WHATSAPP_COMMUNITY_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Join WhatsApp Community
-                </a>
-                ) : (
-                <button
-                    className="tez-whatsapp-button is-disabled"
-                    type="button"
-                    disabled
-                >
-                    WhatsApp Community, Coming Soon
-                </button>
-                )}
+            <a
+              className="tez-whatsapp-button"
+              href={WHATSAPP_COMMUNITY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Join WhatsApp Community
+            </a>
+          ) : (
+            <button
+              className="tez-whatsapp-button is-disabled"
+              type="button"
+              disabled
+            >
+              WhatsApp Community, Coming Soon
+            </button>
+          )}
         </div>
       </section>
     );

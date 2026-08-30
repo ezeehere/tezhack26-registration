@@ -1,0 +1,316 @@
+.th26-pass-section {
+  width: min(100%, 760px);
+  margin: 32px auto;
+}
+
+.th26-registration-pass {
+  --pass-navy: #07384a;
+  --pass-teal: #238783;
+  --pass-yellow: #edaf21;
+  --pass-cream: #f7f1e5;
+  --pass-paper: #fffaf0;
+
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  color: var(--pass-navy);
+  background-color: var(--pass-paper);
+  background-image:
+    radial-gradient(
+      rgba(7, 56, 74, 0.1) 0.7px,
+      transparent 0.7px
+    );
+  background-size: 7px 7px;
+  border: 2px solid var(--pass-navy);
+  box-shadow:
+    9px 10px 0 rgba(7, 56, 74, 0.14),
+    0 18px 45px rgba(7, 56, 74, 0.12);
+
+  clip-path: polygon(
+    0.7% 1.2%,
+    5% 0.4%,
+    10% 1%,
+    16% 0.3%,
+    23% 0.9%,
+    30% 0.2%,
+    37% 0.8%,
+    45% 0.3%,
+    52% 1%,
+    60% 0.3%,
+    68% 0.9%,
+    76% 0.2%,
+    84% 0.8%,
+    92% 0.3%,
+    99.3% 1%,
+    99.7% 98.8%,
+    93% 99.5%,
+    85% 98.9%,
+    77% 99.6%,
+    68% 99%,
+    59% 99.7%,
+    50% 99%,
+    41% 99.6%,
+    32% 98.9%,
+    23% 99.7%,
+    14% 99%,
+    6% 99.6%,
+    0.4% 98.8%
+  );
+}
+
+.th26-pass-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px dashed rgba(7, 56, 74, 0.35);
+}
+
+.th26-pass-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.th26-pass-brand img {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  padding: 5px;
+  background: var(--pass-cream);
+  border: 2px solid var(--pass-navy);
+  border-radius: 50%;
+}
+
+.th26-pass-brand div {
+  display: flex;
+  flex-direction: column;
+}
+
+.th26-pass-brand strong {
+  font-size: 1.45rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.th26-pass-brand span {
+  margin-top: 5px;
+  color: var(--pass-teal);
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.th26-pass-header > p {
+  margin: 0;
+  padding: 10px 14px;
+  color: var(--pass-navy);
+  background: var(--pass-yellow);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  transform: rotate(1deg);
+  clip-path: polygon(
+    2% 6%,
+    97% 0,
+    100% 90%,
+    4% 100%,
+    0 15%
+  );
+}
+
+.th26-pass-registration {
+  position: relative;
+  z-index: 2;
+  margin: 25px 0 20px;
+  padding: 18px 20px;
+  color: var(--pass-cream);
+  background: var(--pass-navy);
+  transform: rotate(-0.5deg);
+  clip-path: polygon(
+    0.8% 6%,
+    10% 0,
+    21% 4%,
+    34% 0,
+    46% 4%,
+    58% 0,
+    71% 4%,
+    84% 0,
+    99% 5%,
+    100% 93%,
+    88% 100%,
+    74% 96%,
+    59% 100%,
+    44% 96%,
+    28% 100%,
+    13% 96%,
+    0 100%
+  );
+}
+
+.th26-pass-registration span,
+.th26-pass-team > span,
+.th26-pass-information span,
+.th26-pass-payment span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--pass-teal);
+  font-size: 0.73rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.th26-pass-registration span {
+  color: #a7d8d1;
+}
+
+.th26-pass-registration strong {
+  display: block;
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  letter-spacing: 0.08em;
+}
+
+.th26-pass-team {
+  position: relative;
+  z-index: 2;
+  margin: 23px 0;
+}
+
+.th26-pass-team h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 5vw, 2.7rem);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.th26-pass-information {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgba(7, 56, 74, 0.25);
+  border-left: 1px solid rgba(7, 56, 74, 0.25);
+}
+
+.th26-pass-information > div {
+  min-width: 0;
+  padding: 18px;
+  border-right: 1px solid rgba(7, 56, 74, 0.25);
+  border-bottom: 1px solid rgba(7, 56, 74, 0.25);
+}
+
+.th26-pass-information strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.th26-pass-payment {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+  padding: 16px 18px;
+  background: rgba(237, 175, 33, 0.2);
+  border-left: 6px solid var(--pass-yellow);
+}
+
+.th26-pass-payment strong {
+  color: #8a5b00;
+  font-size: 1.05rem;
+}
+
+.th26-pass-status-dot {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+  margin: 0 !important;
+  background: var(--pass-yellow);
+  border: 3px solid var(--pass-paper);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--pass-yellow);
+}
+
+.th26-pass-footer {
+  position: relative;
+  z-index: 2;
+  padding-top: 18px;
+  color: rgba(7, 56, 74, 0.76);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.th26-pass-footer p {
+  margin: 3px 0;
+}
+
+.th26-pass-fold {
+  position: absolute;
+  pointer-events: none;
+}
+
+.th26-pass-fold-one {
+  right: -45px;
+  bottom: -65px;
+  width: 190px;
+  height: 190px;
+  background: rgba(35, 135, 131, 0.15);
+  transform: rotate(35deg);
+}
+
+.th26-pass-fold-two {
+  right: 38px;
+  bottom: -105px;
+  width: 180px;
+  height: 180px;
+  background: rgba(237, 175, 33, 0.11);
+  transform: rotate(18deg);
+}
+
+
+
+@media (max-width: 600px) {
+  .th26-pass-section {
+    margin: 20px auto;
+  }
+
+  .th26-registration-pass {
+    padding: 20px 17px;
+  }
+
+  .th26-pass-header {
+    align-items: flex-start;
+  }
+
+  .th26-pass-brand img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .th26-pass-brand strong {
+    font-size: 1.15rem;
+  }
+
+  .th26-pass-header > p {
+    max-width: 125px;
+    text-align: center;
+    font-size: 0.65rem;
+  }
+
+  .th26-pass-information {
+    grid-template-columns: 1fr;
+  }
+
+  .th26-pass-registration {
+    padding: 16px;
+  }
+}
+
