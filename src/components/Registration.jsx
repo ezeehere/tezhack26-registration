@@ -58,7 +58,7 @@ function FormField({ label, optional = false, ...inputProps }) {
   );
 }
 
-function Registration() {
+function Registration({ showHeading = true }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [activeParticipant, setActiveParticipant] =
     useState(0);
@@ -577,19 +577,21 @@ function Registration() {
       className="tez-content-panel tez-registration"
       id="registration"
     >
-      <div className="tez-section-heading">
-        <span className="tez-section-number">
-          03
-        </span>
+      {showHeading && (
+        <div className="tez-section-heading">
+          <span className="tez-section-number">
+            03
+          </span>
 
-        <div>
-          <p className="tez-handwritten-label">
-            Registration
-          </p>
+          <div>
+            <p className="tez-handwritten-label">
+              Registration
+            </p>
 
-          <h2>Register your team.</h2>
+            <h2>Register your team.</h2>
+          </div>
         </div>
-      </div>
+      )}
 
       <form
         className="tez-registration-form"

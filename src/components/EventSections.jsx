@@ -1,4 +1,4 @@
-import Registration from "./Registration";
+import RegistrationCTA from "./RegistrationCTA";
 const faqItems = [
   {
     question: "Who can participate?",
@@ -119,7 +119,10 @@ function EventSections() {
             <p className="tez-handwritten-label">Event Dates</p>
             <h2>Three dates. Forty-eight hours.</h2>
           </div>
+   
         </div>
+
+        
 
         <div className="tez-date-grid">
           <article className="tez-date-card">
@@ -129,6 +132,7 @@ function EventSections() {
               <small>2026</small>
             </div>
           </article>
+          
 
           <article className="tez-date-card">
             <strong>05</strong>
@@ -154,7 +158,9 @@ function EventSections() {
           <strong>4 September 2026, 9:00 AM IST</strong>
         </div>
       </section>
-      <Registration/>
+
+      <RegistrationCTA />
+     
 
       <section className="tez-content-panel" id="disclosures">
         <div className="tez-section-heading">

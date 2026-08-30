@@ -3,6 +3,7 @@ import "./Hero.css";
 import tucsLogo from "../assets/tucs-logo.png";
 import tezhackLogo from "../assets/tezhack-logo.png";
 import origamiArt from "../assets/origami-art.png";
+import { Link } from "react-router-dom";
 
 function EventLogo({ src, alt }) {
   return (
@@ -146,36 +147,17 @@ function Hero() {
             )}
           </div>
 
-          <div className="th26-deadline">
-            <span>Registration closes</span>
+       
 
-            <strong>
-              4 September 2026, 9:00 AM IST
-            </strong>
-          </div>
-
-          <nav
-            className="th26-actions"
-            aria-label="Main website sections"
-          >
-            <a href="#about">
-              <small>01</small>
-              <strong>About the Event</strong>
-            </a>
-
-            <a href="#dates">
-              <small>02</small>
-              <strong>Event Dates</strong>
-            </a>
-
-            <a
-              href="#registration"
-              className="th26-registration-link"
+          <div className="th26-actions th26-register-only">
+            <Link
+              className="th26-hero-register-button"
+              to="/register"
             >
-              <small>03</small>
-              <strong>Registration</strong>
-            </a>
-          </nav>
+              <span>Register Now</span>
+              <b>↗</b>
+            </Link>
+          </div>
         </div>
       </section>
     </main>

@@ -1,16 +1,21 @@
-import Hero from "./components/Hero";
-import EventSections from "./components/EventSections";
-import ScrollEffects from "./components/ScrollEffects";
-import Footer from "./components/Footer";
+import { Route, Routes } from "react-router-dom";
+
+import HomePage from "./pages/HomePage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
-    <>
-      <ScrollEffects />
-      <Hero />
-      <EventSections />
-      <Footer />
-    </>
+    <Routes>
+      <Route
+        path="/"
+        element={<HomePage />}
+      />
+
+      <Route
+        path="/register"
+        element={<RegisterPage />}
+      />
+    </Routes>
   );
 }
 

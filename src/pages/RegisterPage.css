@@ -1,0 +1,184 @@
+.th26-register-page {
+  min-height: 100vh;
+  padding: 22px;
+  color: #07384a;
+  background: #07384a;
+}
+
+.th26-register-shell {
+  width: min(100%, 1280px);
+  margin: 0 auto;
+  padding: clamp(22px, 3vw, 42px);
+  background-color: #f8f1e5;
+  background-image:
+    radial-gradient(
+      rgba(7, 56, 74, 0.11) 0.7px,
+      transparent 0.7px
+    );
+  background-size: 8px 8px;
+  border: 2px solid #07384a;
+  border-radius: 28px;
+}
+
+.th26-register-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(7, 56, 74, 0.2);
+}
+
+.th26-back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #07384a;
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.th26-back-home span {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  color: #f8f1e5;
+  background: #07384a;
+  border-radius: 50%;
+}
+
+.th26-register-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.th26-register-brand img {
+  width: 48px;
+  height: 48px;
+  padding: 4px;
+  object-fit: contain;
+  background: #fffaf0;
+  border: 2px solid #07384a;
+  border-radius: 50%;
+}
+
+.th26-register-brand div {
+  display: flex;
+  flex-direction: column;
+}
+
+.th26-register-brand strong {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.th26-register-brand span {
+  margin-top: 4px;
+  color: #238783;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.th26-register-introduction {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  align-items: end;
+  gap: 35px;
+  margin: 36px 0 30px;
+}
+
+.th26-register-introduction > div > span {
+  display: block;
+  margin-bottom: 10px;
+  color: #238783;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.th26-register-introduction h1 {
+  margin: 0;
+  color: #07384a;
+  font-size: clamp(2.4rem, 5vw, 4.3rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.th26-register-introduction p {
+  max-width: 600px;
+  margin: 14px 0 0;
+  color: rgba(7, 56, 74, 0.72);
+  line-height: 1.55;
+}
+
+.th26-register-introduction aside {
+  padding: 17px 19px;
+  background: rgba(237, 175, 33, 0.2);
+  border-left: 5px solid #edaf21;
+}
+
+.th26-register-introduction aside span {
+  display: block;
+  margin-bottom: 7px;
+  color: #238783;
+  font-size: 0.67rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.th26-register-introduction aside strong,
+.th26-register-introduction aside small {
+  display: block;
+}
+
+.th26-register-introduction aside small {
+  margin-top: 4px;
+  color: rgba(7, 56, 74, 0.7);
+}
+
+.th26-register-page .tez-registration {
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .th26-register-page {
+    padding: 7px;
+  }
+
+  .th26-register-shell {
+    padding: 18px 13px 25px;
+    border-radius: 21px;
+  }
+
+  .th26-register-header {
+    padding-bottom: 15px;
+  }
+
+  .th26-register-brand img {
+    width: 41px;
+    height: 41px;
+  }
+
+  .th26-register-brand strong {
+    font-size: 0.85rem;
+  }
+
+  .th26-register-introduction {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin: 28px 0 24px;
+  }
+
+  .th26-register-introduction h1 {
+    font-size: clamp(2.2rem, 12vw, 3.4rem);
+  }
+
+  .th26-register-introduction aside {
+    width: auto;
+  }
+}
