@@ -149,7 +149,7 @@ function Hero() {
 
        
 
-          <div className="th26-actions th26-register-only">
+          <div className="th26-hero-register-wrap">
             <Link
               className="th26-hero-register-button"
               to="/register"

@@ -1275,3 +1275,123 @@
     min-width: 0;
   }
 }
+.th26-hero-register-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: max-content;
+  margin-top: 7px;
+}
+
+.th26-hero-register-button {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  width: 255px;
+  min-height: 61px;
+  box-sizing: border-box;
+  padding: 14px 18px 14px 21px;
+  color: #07384a;
+  background: #edaf21;
+  box-shadow:
+    6px 7px 0 rgba(7, 56, 74, 0.2);
+  font-size: 1rem;
+  font-weight: 900;
+  text-decoration: none;
+  transform: rotate(-0.7deg);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+
+  clip-path: polygon(
+    1% 8%,
+    10% 3%,
+    21% 7%,
+    33% 2%,
+    46% 6%,
+    59% 1%,
+    72% 6%,
+    85% 2%,
+    99% 7%,
+    100% 93%,
+    87% 98%,
+    74% 94%,
+    61% 99%,
+    47% 95%,
+    33% 100%,
+    19% 95%,
+    1% 100%
+  );
+}
+
+.th26-hero-register-button::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 65px;
+  height: 16px;
+  pointer-events: none;
+  background: rgba(255, 246, 207, 0.74);
+  transform: translateX(-50%) rotate(2deg);
+}
+
+.th26-hero-register-button span {
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.th26-hero-register-button b {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  flex: 0 0 31px;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  color: #f8f1e5;
+  background: #07384a;
+  border-radius: 50%;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.th26-hero-register-button:hover {
+  box-shadow:
+    3px 4px 0 rgba(7, 56, 74, 0.22);
+  transform: translateY(3px) rotate(0);
+}
+
+.th26-hero-register-button:focus-visible {
+  outline: 3px solid #238783;
+  outline-offset: 5px;
+}
+
+@media (max-width: 600px) {
+  .th26-hero-register-wrap {
+    justify-content: center;
+    width: 100%;
+    margin-top: 13px;
+  }
+
+  .th26-hero-register-button {
+    width: min(100%, 270px);
+    min-height: 57px;
+    padding: 12px 15px 12px 19px;
+    gap: 20px;
+    box-shadow:
+      5px 6px 0 rgba(7, 56, 74, 0.18);
+    font-size: 0.95rem;
+  }
+
+  .th26-hero-register-button b {
+    flex-basis: 29px;
+    width: 29px;
+    height: 29px;
+    font-size: 0.85rem;
+  }
+}
