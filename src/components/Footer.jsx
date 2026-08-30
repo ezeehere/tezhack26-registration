@@ -59,19 +59,7 @@ function Footer() {
         </address>
       </div>
 
-      <div className="th26-footer-bottom">
-        <div className="th26-footer-event">
-          <strong>4, 5 and 6 September 2026</strong>
-          <span>CSE Building, Tezpur University</span>
-        </div>
-
-        <p>
-          Tezpur University Computer Society
-          <b> × </b>
-          CSE Career Hub
-        </p>
-      </div>
-    </footer>
+   </footer>
   );
 }
 
