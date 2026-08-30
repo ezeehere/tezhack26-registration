@@ -1395,3 +1395,17 @@
     font-size: 0.85rem;
   }
 }
+.th26-art-stage {
+  overflow: visible;
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.th26-art-stage::before,
+.th26-art-stage::after {
+  display: none !important;
+}
