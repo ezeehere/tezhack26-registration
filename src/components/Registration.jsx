@@ -4,7 +4,10 @@ import upiQr from "../assets/upi-qr.png";
 const SCRIPT_URL =
   import.meta.env.VITE_GOOGLE_SCRIPT_URL || "";
 
-const UPI_ID = "";
+const WHATSAPP_COMMUNITY_URL =
+  import.meta.env.VITE_WHATSAPP_COMMUNITY_URL || "";
+
+const UPI_ID = "nayankumar6402-2@okicici";
 
 const REGISTRATION_FEES = {
   2: 100,
@@ -565,9 +568,24 @@ async function copyUpiId() {
             </div>
           </dl>
 
-          <button type="button" disabled>
-            WhatsApp Community, Coming Soon
-          </button>
+          {WHATSAPP_COMMUNITY_URL ? (
+                <a
+                    className="tez-whatsapp-button"
+                    href={WHATSAPP_COMMUNITY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Join WhatsApp Community
+                </a>
+                ) : (
+                <button
+                    className="tez-whatsapp-button is-disabled"
+                    type="button"
+                    disabled
+                >
+                    WhatsApp Community, Coming Soon
+                </button>
+                )}
         </div>
       </section>
     );
