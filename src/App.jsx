@@ -1,6 +1,7 @@
 import Hero from "./components/Hero";
 import EventSections from "./components/EventSections";
 import ScrollEffects from "./components/ScrollEffects";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <ScrollEffects />
       <Hero />
       <EventSections />
+      <Footer />
     </>
   );
 }

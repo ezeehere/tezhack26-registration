@@ -199,20 +199,7 @@ function EventSections() {
         </div>
       </section>
 
-      <footer className="tez-footer">
-        <div>
-          <strong>TEZHACK 2026</strong>
-          <span>4, 5 and 6 September 2026</span>
-        </div>
-
-        <div>
-          <span>Contact Person</span>
-          <strong>Bishwas Das</strong>
-          <a href="mailto:csm25052@tezu.ac.in">
-            csm25052@tezu.ac.in
-          </a>
-        </div>
-      </footer>
+    
     </div>
   );
 }
