@@ -64,7 +64,7 @@ function RegistrationPass({
 
           <div>
             <span>Venue</span>
-            <strong>CSE Building, Tezpur University</strong>
+            <strong>CSE Department, Tezpur University</strong>
           </div>
 
           <div>

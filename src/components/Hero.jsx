@@ -26,7 +26,7 @@ const importantNotes = [
   },
   {
     label: "Venue",
-    value: "CSE Building, Tezpur University",
+    value: "CSE Department, Tezpur University",
     color: "cream",
   },
   {

@@ -68,7 +68,7 @@ function About() {
             <small>TEZHACK 2026</small>
             <strong>48</strong>
             <span>HOURS</span>
-            <p>CSE BUILDING</p>
+            <p>CSE Department</p>
           </PaperPiece>
 
           <PaperPiece className="about-date-note">
