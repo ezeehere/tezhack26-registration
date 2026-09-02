@@ -14,9 +14,7 @@ function Sponsors() {
       <header className="th26-partners-header">
         <p>TEZHACK 2026</p>
 
-        <h2 id="th26-partners-title">
-          With support from
-        </h2>
+        
 
         <span aria-hidden="true" />
       </header>
