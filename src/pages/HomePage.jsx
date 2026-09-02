@@ -1,14 +1,17 @@
 import Hero from "../components/Hero";
+import Sponsors from "../components/Sponsors";
 import EventSections from "../components/EventSections";
-import ScrollEffects from "../components/ScrollEffects";
 import Footer from "../components/Footer";
 
 function HomePage() {
   return (
     <>
-      <ScrollEffects />
       <Hero />
+
+      <Sponsors />
+
       <EventSections />
+
       <Footer />
     </>
   );
