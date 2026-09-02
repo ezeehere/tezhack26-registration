@@ -12,9 +12,10 @@ function Sponsors() {
       <div className="th26-partners-dots" aria-hidden="true" />
 
       <header className="th26-partners-header">
-        <p>TEZHACK 2026</p>
 
-        
+        <h2 id="th26-partners-title">
+          With support from
+        </h2>
 
         <span aria-hidden="true" />
       </header>
