@@ -1,4 +1,4 @@
-import RegistrationCTA from "./RegistrationCTA";
+
 const faqItems = [
   {
     question: "Who can participate?",
@@ -159,7 +159,7 @@ function EventSections() {
         </div>
       </section>
 
-      <RegistrationCTA />
+      
      
 
       <section className="tez-content-panel" id="disclosures">
