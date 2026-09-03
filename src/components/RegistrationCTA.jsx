@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./RegistrationCTA.css";
 
 const REGISTRATION_DEADLINE =
-  new Date("2026-09-04T09:00:00+05:30").getTime();
+  new Date("2026-09-03T21:00:00+05:30").getTime();
 
 function calculateTimeLeft() {
   const difference = Math.max(
@@ -138,7 +138,7 @@ function RegistrationCTA() {
 
         {registrationClosed ? (
           <span className="th26-registration-closed">
-            Registration Closed
+            Registrations Closed
           </span>
         ) : (
           <Link
@@ -155,13 +155,13 @@ function RegistrationCTA() {
         <div className="th26-countdown-heading">
           <span>Registration closes in</span>
           <strong>
-            4 September 2026, 9:00 AM IST
+            3 September 2026, 9:00 PM IST
           </strong>
         </div>
 
         {registrationClosed ? (
           <div className="th26-countdown-closed">
-            Registration has closed
+            Registrations have closed
           </div>
         ) : (
           <div

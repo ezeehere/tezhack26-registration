@@ -154,8 +154,7 @@ function Hero() {
               className="th26-hero-register-button"
               to=""
             >
-              <span>Registerations Over</span>
-              <b>↗</b>
+              <span>Registrations Over</span>
             </Link>
           </div>
         </div>

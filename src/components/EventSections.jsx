@@ -154,8 +154,8 @@ function EventSections() {
 
         <div className="tez-deadline-card">
            
-          <span>Hackathon Starting At</span>
-          <strong>4 September 2026, 9:00 AM IST</strong>
+          <span>Registration Deadline</span>
+          <strong>3 September 2026, 9:00 PM IST</strong>
         </div>
       </section>
 
