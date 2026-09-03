@@ -5,7 +5,7 @@ import RegistrationPass from "./RegistrationPass";
 const WHATSAPP_COMMUNITY_URL =
   import.meta.env.VITE_WHATSAPP_COMMUNITY_URL || "";
 
-const UPI_ID = "nayankumar6402-2@okicici";
+const UPI_ID = "Registration is Over";
 
 const REGISTRATION_FEES = {
   2: 100,
