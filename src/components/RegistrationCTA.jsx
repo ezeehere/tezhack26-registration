@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./RegistrationCTA.css";
 
 const REGISTRATION_DEADLINE =
-  new Date("2026-09-03T21:00:00+05:30").getTime();
+  new Date("2026-09-04T10:00:00+05:30").getTime();
 
 function calculateTimeLeft() {
   const difference = Math.max(
@@ -127,35 +127,35 @@ function RegistrationCTA() {
       id="registration"
     >
       <div className="th26-cta-text">
-        <span>TEAM REGISTRATION</span>
+        <span>Hackathon Initialization</span>
 
         <h2>Ready to build?</h2>
 
         <p>
-          Form a team of 2 to 4 participants and register
+          Prepare your skills, warm upp your machines and join 
           for TEZHACK 2026.
         </p>
 
         {registrationClosed ? (
           <span className="th26-registration-closed">
-            Registrations Closed
+            Starting soon! Hang tight!
           </span>
         ) : (
           <Link
             className="th26-paper-register-button"
-            to="/register"
+            to=""
           >
-            Register Your Team
-            <b>↗</b>
+           
+          
           </Link>
         )}
       </div>
 
       <div className="th26-countdown-area">
         <div className="th26-countdown-heading">
-          <span>Registration closes in</span>
+          <span>Starting on</span>
           <strong>
-            3 September 2026, 9:00 PM IST
+            4 September 2026, 10:00 AM IST
           </strong>
         </div>
 
