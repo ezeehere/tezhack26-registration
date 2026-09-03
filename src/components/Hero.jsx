@@ -154,7 +154,7 @@ function Hero() {
               className="th26-hero-register-button"
               to=""
             >
-              <span>Registerations Opening Soon!</span>
+              <span>Registerations Over</span>
               <b>↗</b>
             </Link>
           </div>
