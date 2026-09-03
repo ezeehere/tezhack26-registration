@@ -1,90 +1,58 @@
 .th26-partners {
   position: relative;
-  isolation: isolate;
   overflow: hidden;
 
   width: calc(100% - 24px);
   max-width: 1880px;
 
+  min-height: 0 !important;
+  height: auto !important;
+
   margin: 22px auto;
-  padding: clamp(34px, 5vw, 66px)
-    clamp(22px, 6vw, 96px);
+  padding: clamp(30px, 4vw, 52px);
 
   color: #073b4c;
-  background: #f5f0e5;
-
-  border: 1.5px solid #073b4c;
-  border-radius: 26px;
-}
-
-/* Same dotted paper feeling as the website */
-
-.th26-partners-dots {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
+  background-color: #f5f0e5;
 
   background-image: radial-gradient(
     circle,
-    rgba(7, 59, 76, 0.15) 1px,
-    transparent 1.15px
+    rgba(7, 59, 76, 0.14) 1px,
+    transparent 1.2px
   );
 
   background-size: 13px 13px;
-  opacity: 0.7;
+
+  border: 1.5px solid #073b4c;
+  border-radius: 25px;
 }
-
-/* Soft paper shape in the corner */
-
-.th26-partners::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-
-  width: 220px;
-  height: 220px;
-
-  right: -90px;
-  bottom: -130px;
-
-  border-radius: 50%;
-  background: rgba(42, 135, 137, 0.2);
-  pointer-events: none;
-}
-
-/* Section heading */
 
 .th26-partners-header {
   display: grid;
   grid-template-columns: auto auto 1fr;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 
-  margin-bottom: clamp(28px, 4vw, 44px);
+  max-width: 1100px;
+  margin: 0 auto 26px;
 }
 
-.th26-partners-header p {
-  margin: 0;
-  padding: 8px 13px;
+.th26-partners-header span {
+  padding: 8px 12px;
 
   color: #073b4c;
   background: #ebae23;
 
   font-family: inherit;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.09em;
 
   clip-path: polygon(
-    3% 8%,
-    48% 1%,
-    97% 7%,
-    94% 50%,
-    100% 93%,
-    52% 99%,
-    4% 92%,
-    7% 51%
+    4% 8%,
+    48% 0,
+    96% 8%,
+    100% 92%,
+    52% 100%,
+    3% 93%
   );
 }
 
@@ -93,108 +61,64 @@
 
   color: #278789;
 
-  /*
-    This should be the same handwriting font
-    already used in the Hero organizer text.
-  */
   font-family: "Kalam", cursive;
-  font-size: clamp(1.75rem, 3vw, 2.65rem);
-  font-weight: 700;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
   line-height: 1;
 }
 
-.th26-partners-header > span {
+.th26-partners-header i {
+  display: block;
   height: 2px;
   background: #073b4c;
-  opacity: 0.75;
+  opacity: 0.7;
 }
 
-/* Sponsor board */
+/* Main sponsor */
 
-.th26-partners-board {
-  display: grid;
-  grid-template-columns:
-    minmax(0, 1.15fr)
-    50px
-    minmax(0, 0.85fr);
-
-  align-items: center;
-  gap: clamp(18px, 3vw, 38px);
-}
-
-.th26-partner {
+.th26-title-sponsor {
   position: relative;
 
   display: flex;
-  min-width: 0;
-  min-height: 245px;
+  width: min(100%, 650px);
+  min-height: 0 !important;
+
+  margin: 0 auto;
+  padding: 27px 30px;
 
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  padding: 32px;
-
-  border: 1px solid rgba(7, 59, 76, 0.35);
-}
-
-/* Larger title sponsor paper */
-
-.th26-partner-title {
   background: #fffaf0;
-
-  clip-path: polygon(
-    0.8% 3%,
-    24% 1.2%,
-    49% 2.4%,
-    74% 0.8%,
-    99% 3%,
-    98.5% 50%,
-    100% 97%,
-    74% 99%,
-    50% 97.7%,
-    25% 99%,
-    0.5% 97%,
-    1.3% 50%
-  );
+  border: 1px solid rgba(7, 59, 76, 0.35);
 
   box-shadow: 7px 8px 0 rgba(7, 59, 76, 0.1);
-}
-
-/* Smaller community partner paper */
-
-.th26-partner-community {
-  min-height: 215px;
-  background: #c7d8cf;
 
   clip-path: polygon(
     1% 4%,
-    25% 1%,
-    51% 3%,
-    77% 1%,
+    24% 1%,
+    50% 3%,
+    76% 1%,
     99% 4%,
-    98% 49%,
+    98% 50%,
     100% 96%,
     75% 99%,
     49% 97%,
     24% 99%,
     0.5% 96%,
-    1.4% 50%
+    1.5% 49%
   );
 }
 
-/* Small paper tape */
-
-.th26-partner-tape {
+.th26-paper-tape {
   position: absolute;
-  top: -6px;
+  top: -4px;
   left: 50%;
 
-  width: 84px;
-  height: 22px;
+  width: 82px;
+  height: 21px;
 
-  background: rgba(235, 174, 35, 0.45);
-
+  background: rgba(235, 174, 35, 0.5);
   transform: translateX(-50%) rotate(-2deg);
 
   clip-path: polygon(
@@ -205,237 +129,147 @@
   );
 }
 
-.th26-partner-community .th26-partner-tape {
-  background: rgba(255, 250, 240, 0.7);
-  transform: translateX(-50%) rotate(2deg);
-}
-
-/* Labels now use the normal website font */
-
-.th26-partner-label {
-  margin: 0 0 22px;
-  padding-bottom: 6px;
+.th26-title-sponsor p {
+  margin: 0 0 12px;
+  padding-bottom: 5px;
 
   color: #278789;
   border-bottom: 2px solid #ebae23;
 
   font-family: inherit;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-/* Logo sizes */
-
-.th26-partner-oil-logo {
+.th26-title-sponsor img {
   display: block;
 
   width: auto;
-  max-width: 190px;
-  max-height: 170px;
+  max-width: 140px;
+  max-height: 125px;
 
   object-fit: contain;
 }
 
-.th26-partner-gdg-logo {
-  display: block;
+/* Community partner */
 
-  width: min(100%, 440px);
-  height: auto;
-  max-height: 100px;
+.th26-community-partner {
+  display: flex;
+  width: min(100%, 560px);
+  min-height: 0 !important;
 
-  object-fit: contain;
-}
+  margin: 20px auto 0;
+  padding: 15px 22px;
 
-/* Middle paper symbol */
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
 
-.th26-partners-divider {
-  display: grid;
-  place-items: center;
-}
-
-.th26-partners-divider span {
-  display: grid;
-  place-items: center;
-
-  width: 42px;
-  height: 42px;
-
-  color: #073b4c;
-  background: #ebae23;
-
-  font-size: 1.4rem;
-  font-weight: 900;
-
-  transform: rotate(4deg);
+  background: #c7d8cf;
+  border-left: 4px solid #278789;
 
   clip-path: polygon(
-    4% 8%,
-    48% 0,
-    96% 8%,
-    100% 50%,
-    94% 94%,
-    51% 100%,
-    5% 94%,
-    0 48%
+    1% 5%,
+    50% 1%,
+    99% 5%,
+    98% 95%,
+    50% 99%,
+    1% 95%
   );
 }
 
-/* Mobile */
+.th26-community-partner p {
+  flex: 0 0 auto;
+  margin: 0;
 
-@media (max-width: 760px) {
+  color: #073b4c;
+
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.th26-community-partner img {
+  display: block;
+
+  width: min(100%, 280px);
+  height: auto;
+  max-height: 58px;
+
+  object-fit: contain;
+}
+
+@media (max-width: 650px) {
   .th26-partners {
     width: calc(100% - 16px);
-
-    margin: 14px auto 22px;
-    padding: 30px 18px;
-
-    border-radius: 20px;
+    margin: 14px auto 20px;
+    padding: 28px 16px;
+    border-radius: 19px;
   }
 
   .th26-partners-header {
     grid-template-columns: auto 1fr;
-    gap: 11px;
-    margin-bottom: 26px;
+    gap: 10px;
+    margin-bottom: 22px;
   }
 
   .th26-partners-header h2 {
-    font-size: clamp(1.65rem, 8vw, 2.1rem);
+    font-size: 1.85rem;
   }
 
-  .th26-partners-header > span {
+  .th26-partners-header i {
     display: none;
   }
 
-  .th26-partners-board {
-    grid-template-columns: 1fr;
-    gap: 13px;
+  .th26-title-sponsor {
+    padding: 27px 20px 23px;
   }
 
-  .th26-partner {
-    min-height: 0;
-    padding: 30px 20px;
+  .th26-title-sponsor img {
+    max-width: 120px;
+    max-height: 110px;
   }
 
-  .th26-partners-divider {
-    height: 24px;
+  .th26-community-partner {
+    padding: 17px;
+    flex-direction: column;
+    gap: 11px;
   }
 
-  .th26-partners-divider span {
-    width: 34px;
-    height: 34px;
-    font-size: 1rem;
-  }
-
-  .th26-partner-label {
-    margin-bottom: 17px;
-    font-size: 0.68rem;
-  }
-
-  .th26-partner-oil-logo {
-    max-width: 150px;
-    max-height: 140px;
-  }
-
-  .th26-partner-gdg-logo {
-    max-width: 300px;
-    max-height: 78px;
+  .th26-community-partner img {
+    width: min(100%, 255px);
+    max-height: 62px;
   }
 }
+.th26-title-sponsor .th26-oil-india-logo {
+  display: block !important;
 
-@media (max-width: 380px) {
-  .th26-partners-header p {
-    font-size: 0.6rem;
-    padding: 7px 9px;
-  }
+  width: 105px !important;
+  height: 158px !important;
 
-  .th26-partners-header h2 {
-    font-size: 1.55rem;
-  }
-
-  .th26-partner {
-    padding-inline: 14px;
-  }
-}
-/* Compact sponsor section */
-
-.th26-partners {
+  min-width: 0 !important;
   min-height: 0 !important;
-  height: auto !important;
 
-  margin-top: 18px;
-  margin-bottom: 22px;
+  max-width: 105px !important;
+  max-height: 158px !important;
 
-  padding-top: 34px;
-  padding-bottom: 34px;
+  object-fit: contain !important;
+  object-position: center !important;
+
+  margin: 0 auto !important;
+  padding: 0 !important;
+  transform: none !important;
 }
 
-.th26-partners-header {
-  margin-bottom: 24px;
-}
-
-.th26-partners-board {
-  align-items: stretch;
-}
-
-.th26-partner,
-.th26-partner-title,
-.th26-partner-community {
-  min-height: 210px;
-  height: 100%;
-  padding: 26px 24px;
-}
-
-.th26-partner-label {
-  margin-bottom: 14px;
-}
-
-.th26-partner-oil-logo {
-  max-width: 145px;
-  max-height: 130px;
-}
-
-.th26-partner-gdg-logo {
-  max-width: 390px;
-  max-height: 85px;
-}
-
-/* Remove large space inherited from general section CSS */
-
-.th26-partners section,
-.th26-partners article {
-  min-height: 0 !important;
-}
-
-/* Mobile */
-
-@media (max-width: 760px) {
-  .th26-partners {
-    min-height: 0 !important;
-    padding-top: 26px;
-    padding-bottom: 26px;
-  }
-
-  .th26-partners-header {
-    margin-bottom: 20px;
-  }
-
-  .th26-partner,
-  .th26-partner-title,
-  .th26-partner-community {
-    min-height: 170px;
-    height: auto;
-    padding: 24px 18px;
-  }
-
-  .th26-partner-oil-logo {
-    max-width: 125px;
-    max-height: 115px;
-  }
-
-  .th26-partner-gdg-logo {
-    max-width: 280px;
-    max-height: 70px;
+@media (max-width: 650px) {
+  .th26-title-sponsor .th26-oil-india-logo {
+    width: 82px !important;
+    height: 124px !important;
+    max-width: 82px !important;
+    max-height: 124px !important;
   }
 }
