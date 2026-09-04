@@ -1,13 +1,13 @@
 export const problemStatements = {
   web: [
-    ["WEB01", "Verified Disaster Resource Portal"],
-    ["WEB02", "Scholarship Eligibility Portal"],
+    ["WEB01(1)", "Verified Disaster Resource Portal"],
+    ["WEB02(1)", "Scholarship Eligibility Portal"],
     ["WEB03", "Public Issue Resolution Tracker"],
-    ["WEB04", "Rural Produce Surplus Exchange"],
+    ["WEB04(02)", "Rural Produce Surplus Exchange"],
     ["WEB05", "Volunteer Skill and Task Allocation Portal"],
     ["WEB06", "Shared Raw Material Procurement and Cost Coordination Portal"],
     ["WEB07", "Community Equipment Lending and Booking Portal"],
-    ["WEB08", "Temporary Worker Work, Attendance and Payment Record Portal"],
+    ["WEB08(1)", "Temporary Worker Work, Attendance and Payment Record Portal"],
   ],
   ml: [
     ["ML01", "Multilingual Scam Message Analysis"],
@@ -23,14 +23,14 @@ export const problemStatements = {
 
 export const challengeCards = {
   web: [
-    { id: "WEB-C01", title: "Quick Search", task: "Add a search box that finds relevant records by at least two useful text fields.", check: "Create three records and find the intended one using either field." },
-    { id: "WEB-C02", title: "Useful Filters", task: "Add at least two filters that can be used together, such as status and location.", check: "Apply both filters and verify that only matching records remain." },
+    { id: "WEB-C01(1)", title: "Quick Search", task: "Add a search box that finds relevant records by at least two useful text fields.", check: "Create three records and find the intended one using either field." },
+    { id: "WEB-C02(1)", title: "Useful Filters", task: "Add at least two filters that can be used together, such as status and location.", check: "Apply both filters and verify that only matching records remain." },
     { id: "WEB-C03", title: "Sorting Control", task: "Let users sort a main list by two useful options, such as newest, priority or name.", check: "Switch between both options and show the order changing correctly." },
-    { id: "WEB-C04", title: "Save for Later", task: "Allow a user to save or bookmark important records and view the saved list.", check: "Save two records, remove one and reload the saved list." },
+    { id: "WEB-C04(2)", title: "Save for Later", task: "Allow a user to save or bookmark important records and view the saved list.", check: "Save two records, remove one and reload the saved list." },
     { id: "WEB-C05", title: "CSV Export", task: "Allow an authorised user to download the main records as a readable CSV file.", check: "Export at least three records and open the file to verify its headings and values." },
     { id: "WEB-C06", title: "Print-Friendly Summary", task: "Create a clean print view for one useful record or summary.", check: "Open print preview and show that important information is readable without navigation clutter." },
     { id: "WEB-C07", title: "Activity Log", task: "Record at least three important actions with the action, time and responsible user or role.", check: "Perform three actions and verify that the log shows each one in order." },
-    { id: "WEB-C08", title: "Change History", task: "For one important status, store and display its previous value, new value, time and reason.", check: "Change the status twice and show the complete history." },
+    { id: "WEB-C08(1)", title: "Change History", task: "For one important status, store and display its previous value, new value, time and reason.", check: "Change the status twice and show the complete history." },
     { id: "WEB-C09", title: "Duplicate Warning", task: "Warn users when a new submission appears similar to an existing record, while still allowing a justified submission.", check: "Submit a similar record, show the warning and demonstrate both cancel and continue." },
     { id: "WEB-C10", title: "Draft Recovery", task: "Save an unfinished form on the device and restore it after the page is refreshed.", check: "Enter partial information, refresh the page and recover the draft." },
     { id: "WEB-C11", title: "Dashboard Counts", task: "Show at least three automatically calculated summary counts relevant to the project.", check: "Change the underlying records and verify that all counts update." },
