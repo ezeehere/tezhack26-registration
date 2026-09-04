@@ -1409,3 +1409,35 @@
 .th26-art-stage::after {
   display: none !important;
 }
+.th26-hero-action-row {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.th26-allocation-button {
+  color: var(--tez-light-paper, #faf6ed);
+  background: var(--tez-teal, #287c7b);
+  box-shadow: 5px 6px 0 var(--tez-dark-navy, #082938);
+  transform: rotate(1deg);
+}
+
+.th26-allocation-button:hover {
+  transform: rotate(0deg) translateY(-3px);
+}
+
+@media (max-width: 560px) {
+  .th26-hero-action-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .th26-hero-action-row .th26-hero-register-button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}

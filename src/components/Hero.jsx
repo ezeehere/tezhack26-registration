@@ -149,12 +149,19 @@ function Hero() {
 
        
 
-          <div className="th26-hero-register-wrap">
+          <div className="th26-hero-action-row">
             <Link
               className="th26-hero-register-button"
-              to=""
+              to="/problem-statements"
             >
               <span>Problem Statements</span>
+            </Link>
+
+            <Link
+              className="th26-hero-register-button th26-allocation-button"
+              to="/team-allocations"
+            >
+              <span>Team Allocations</span>
             </Link>
           </div>
         </div>

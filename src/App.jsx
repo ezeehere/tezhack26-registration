@@ -5,6 +5,8 @@ import ProblemStatementsPage from "./pages/ProblemStatementsPage";
 import RegisterPage from "./pages/RegisterPage";
 import ChallengeJarPage from "./pages/ChallengeJarPage";
 import TeamCallerPage from "./pages/TeamCallerPage";
+import TeamAllocationsPage from "./pages/TeamAllocationsPage";
+
 
 
 
@@ -20,6 +22,11 @@ function App() {
       <Route path="/problem-statements" element={<ProblemStatementsPage />} />
       <Route path="/challenge-jar" element={<ChallengeJarPage />} />
       <Route path="/team-caller" element={<TeamCallerPage />} />
+      
+      <Route
+        path="/team-allocations"
+        element={<TeamAllocationsPage />}
+      />
 
       <Route
         path="/register"
