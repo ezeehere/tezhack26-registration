@@ -40,9 +40,15 @@ const faqItems = [
     question: "Where will TEZHACK be held?",
     answer: "We'll be waiting for you at the lovely CSE Building at Tezpur University. See you there!",
   },
- {
+  {
+
+    question: "Till when registration will be open?",
+    answer: "Registration will be open till 4 September 2026, 9:00 AM IST or 30 Teams ",
+
+  },
+  {
     question: "When does registration close?",
-    answer: "Make sure to grab your spot before September 3, 2026, at 9:00 PM IST or till 30 teams whichever comes first. We can't wait to have you join us!",
+    answer: "Make sure to grab your spot before September 4, 2026, at 9:00 AM IST. We can't wait to have you join us!",
   },
   {
     question: "What is the prize pool?",

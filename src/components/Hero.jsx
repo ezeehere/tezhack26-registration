@@ -152,9 +152,9 @@ function Hero() {
           <div className="th26-hero-register-wrap">
             <Link
               className="th26-hero-register-button"
-              to=""
+              to="/problem-statements"
             >
-              <span>Registrations Over</span>
+              <span>Problem Statements</span>
             </Link>
           </div>
         </div>
