@@ -1,17 +1,30 @@
-const API_URL = "/api/judging";
+const API_URL =
+  "/api/judging";
+
 
 async function request(payload) {
-  const response = await fetch("/api/judging", {
-    method: "POST",
+  const response =
+    await fetch(
+      API_URL,
+      {
+        method: "POST",
 
-    headers: {
-      "Content-Type": "application/json",
-    },
+        headers: {
+          "Content-Type":
+            "application/json",
+        },
 
-    body: JSON.stringify(payload),
-  });
+        body:
+          JSON.stringify(
+            payload
+          ),
+      }
+    );
 
-  const text = await response.text();
+
+  const text =
+    await response.text();
+
 
   console.log(
     "Judging server response:",
@@ -19,15 +32,19 @@ async function request(payload) {
     text
   );
 
+
   let data;
 
   try {
-    data = JSON.parse(text);
+    data =
+      JSON.parse(text);
+
   } catch {
     throw new Error(
       `Invalid judging server response (${response.status}). Check console.`
     );
   }
+
 
   if (!response.ok) {
     throw new Error(
@@ -36,12 +53,14 @@ async function request(payload) {
     );
   }
 
+
   if (!data.ok) {
     throw new Error(
       data.error ||
       "Judging request failed."
     );
   }
+
 
   return data;
 }
@@ -51,15 +70,23 @@ export const judgingApi = {
 
   getPanelState(panel) {
     return request({
-      action: "getPanelState",
+      action:
+        "getPanelState",
+
       panel,
     });
   },
 
 
-  saveScore(panel, teamId, score) {
+  saveScore(
+    panel,
+    teamId,
+    score
+  ) {
     return request({
-      action: "saveScore",
+      action:
+        "saveScore",
+
       panel,
       teamId,
       score,
@@ -69,7 +96,9 @@ export const judgingApi = {
 
   completePanel(panel) {
     return request({
-      action: "completePanel",
+      action:
+        "completePanel",
+
       panel,
     });
   },
@@ -77,7 +106,8 @@ export const judgingApi = {
 
   getResultsState() {
     return request({
-      action: "getResultsState",
+      action:
+        "getResultsState",
     });
   },
 
