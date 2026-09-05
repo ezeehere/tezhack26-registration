@@ -1,0 +1,3942 @@
+/* =============================================
+   TEZHACK 2026 JUDGING SYSTEM
+============================================= */
+
+.judge-page {
+  min-height: 100vh;
+
+  padding:
+    clamp(16px, 4vw, 52px);
+
+  color:
+    var(--tez-ink, #123c4b);
+
+  background:
+    var(--tez-navy, #0b3545);
+
+  font-family:
+    "Manrope", sans-serif;
+}
+
+
+/* =============================================
+   COMMON
+============================================= */
+
+.judge-handwritten {
+  margin: 0 0 5px;
+
+  color: #287c7b;
+
+  font:
+    700
+    clamp(1.05rem, 2vw, 1.4rem)
+    / 1.2
+    "Kalam",
+    cursive;
+}
+
+
+.judge-main-button,
+.judge-small-button,
+.judge-complete-button,
+.judge-results-button {
+  min-height: 48px;
+
+  padding:
+    12px 20px;
+
+  border:
+    2px solid #082938;
+
+  border-radius:
+    12px 8px 13px 9px;
+
+  cursor: pointer;
+
+  font:
+    900
+    0.78rem
+    "IBM Plex Mono",
+    monospace;
+
+  text-transform: uppercase;
+}
+
+
+.judge-main-button {
+  color: #faf6ed;
+  background: #0b3545;
+
+  box-shadow:
+    4px 4px 0 #e3aa2d;
+}
+
+
+.judge-small-button {
+  color: #0b3545;
+  background: #faf6ed;
+
+  box-shadow:
+    3px 3px 0 #b9cec3;
+}
+
+
+.judge-main-button:disabled,
+.judge-complete-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+
+.judge-error {
+  margin-top: 16px;
+
+  padding:
+    13px 15px;
+
+  border-left:
+    5px solid #b34a3c;
+
+  background:
+    #f6ddd6;
+
+  color:
+    #762f27;
+
+  font-weight: 750;
+}
+
+
+.judge-success {
+  margin-top: 16px;
+
+  padding:
+    13px 15px;
+
+  border-left:
+    5px solid #287c7b;
+
+  background:
+    #dfe9df;
+
+  font-weight: 750;
+}
+
+
+.judge-loading,
+.judge-error-page {
+  width:
+    min(700px, 100%);
+
+  margin: 100px auto;
+
+  padding: 40px;
+
+  border:
+    2px solid #082938;
+
+  border-radius:
+    22px 38px 20px 34px;
+
+  background:
+    #f2ecdf;
+
+  box-shadow:
+    9px 10px 0 #082938;
+
+  text-align: center;
+
+  font-weight: 800;
+}
+
+
+/* =============================================
+   LOGIN
+============================================= */
+
+.judge-login-card {
+  position: relative;
+  overflow: hidden;
+
+  width:
+    min(780px, 100%);
+
+  margin: auto;
+
+  padding:
+    clamp(28px, 6vw, 64px);
+
+  border:
+    2px solid #082938;
+
+  border-radius:
+    42px 18px 38px 22px;
+
+  background-color:
+    #f2ecdf;
+
+  background-image:
+    radial-gradient(
+      rgba(40, 124, 123, 0.2)
+      0.7px,
+      transparent 0.7px
+    );
+
+  background-size:
+    8px 8px;
+
+  box-shadow:
+    10px 12px 0 #082938;
+}
+
+
+.judge-paper-fold {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 100px;
+  height: 100px;
+
+  background: #b9cec3;
+
+  clip-path:
+    polygon(
+      100% 0,
+      100% 100%,
+      0 0
+    );
+}
+
+
+.judge-login-card h1,
+.judge-panel-hero h1,
+.judge-results-hero h1 {
+  margin: 0;
+
+  color: #082938;
+
+  font:
+    clamp(2.8rem, 8vw, 6rem)
+    / 0.93
+    "Archivo Black",
+    sans-serif;
+
+  letter-spacing:
+    -0.055em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.judge-login-card h1 span,
+.judge-panel-hero h1 span,
+.judge-results-hero h1 span {
+  display: block;
+
+  color: #e3aa2d;
+}
+
+
+.judge-login-intro {
+  max-width: 600px;
+
+  margin:
+    20px 0 0;
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.7;
+}
+
+
+.judge-panel-summary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 12px;
+
+  margin-top: 28px;
+}
+
+
+.judge-panel-summary article {
+  padding: 19px;
+
+  border:
+    2px solid #0b3545;
+
+  border-radius:
+    13px 20px 11px 17px;
+
+  background: #faf6ed;
+
+  box-shadow:
+    4px 5px 0 #b9cec3;
+}
+
+
+.judge-panel-summary article:nth-child(2) {
+  background:
+    #e3aa2d;
+
+  box-shadow:
+    4px 5px 0 #287c7b;
+}
+
+
+.judge-panel-summary strong,
+.judge-panel-summary span,
+.judge-panel-summary small {
+  display: block;
+}
+
+
+.judge-panel-summary strong {
+  color: #082938;
+
+  font:
+    900
+    0.8rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-panel-summary span {
+  margin-top: 7px;
+
+  font:
+    800
+    1.4rem
+    "Bricolage Grotesque",
+    sans-serif;
+}
+
+
+.judge-panel-summary small {
+  margin-top: 3px;
+
+  color: #526a71;
+}
+
+
+.judge-login-form {
+  display: grid;
+
+  gap: 17px;
+
+  margin-top: 31px;
+}
+
+
+.judge-login-form label,
+.judge-score-form > label,
+.judge-score-entry label {
+  display: grid;
+
+  gap: 8px;
+
+  color: #0b3545;
+
+  font:
+    800
+    0.75rem
+    / 1.2
+    "IBM Plex Mono",
+    monospace;
+
+  text-transform:
+    uppercase;
+}
+
+
+.judge-login-form input,
+.judge-login-form select,
+.judge-score-form select,
+.judge-score-entry input {
+  width: 100%;
+
+  min-height: 52px;
+
+  padding:
+    11px 14px;
+
+  border:
+    2px solid #0b3545;
+
+  border-radius:
+    10px 15px 9px 13px;
+
+  color: #123c4b;
+
+  background:
+    #fffdf7;
+
+  font:
+    650
+    0.96rem
+    "Manrope",
+    sans-serif;
+}
+
+
+.judge-login-form input:focus,
+.judge-login-form select:focus,
+.judge-score-form select:focus,
+.judge-score-entry input:focus {
+  outline:
+    4px solid
+    rgba(
+      227,
+      170,
+      45,
+      0.5
+    );
+
+  outline-offset:
+    2px;
+}
+
+
+.judge-security-note {
+  margin-top: 23px;
+
+  padding:
+    13px 15px;
+
+  border-left:
+    5px solid #e3aa2d;
+
+  background:
+    #faf6ed;
+
+  font-size:
+    0.86rem;
+
+  font-weight:
+    700;
+
+  line-height:
+    1.5;
+}
+
+
+/* =============================================
+   PANEL HERO
+============================================= */
+
+.judge-panel-hero,
+.judge-results-hero {
+  width:
+    min(1180px, 100%);
+
+  margin:
+    0 auto 24px;
+
+  padding:
+    clamp(27px, 5vw, 55px);
+
+  border:
+    2px solid #082938;
+
+  border-radius:
+    38px 18px 42px 24px;
+
+  background-color:
+    #f2ecdf;
+
+  background-image:
+    radial-gradient(
+      rgba(40,124,123,.18)
+      .8px,
+      transparent .8px
+    );
+
+  background-size:
+    8px 8px;
+
+  box-shadow:
+    10px 12px 0 #082938;
+}
+
+
+.judge-panel-top {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    flex-start;
+
+  gap: 20px;
+}
+
+
+.judge-panel-hero h1 span {
+  font-size:
+    0.48em;
+
+  line-height:
+    1.05;
+}
+
+
+.judge-progress-info {
+  margin-top: 30px;
+}
+
+
+.judge-progress-info > div:first-child {
+  display: flex;
+
+  align-items:
+    baseline;
+
+  gap: 6px;
+}
+
+
+.judge-progress-info strong {
+  color: #082938;
+
+  font:
+    3rem
+    "Archivo Black",
+    sans-serif;
+}
+
+
+.judge-progress-info span {
+  color: #287c7b;
+
+  font:
+    900
+    0.82rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-progress-info small {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #526a71;
+
+  font-weight: 700;
+}
+
+
+.judge-progress-bar {
+  overflow: hidden;
+
+  width: 100%;
+
+  max-width: 600px;
+
+  height: 14px;
+
+  margin-top: 7px;
+
+  border:
+    2px solid #0b3545;
+
+  background:
+    #faf6ed;
+}
+
+
+.judge-progress-bar span {
+  display: block;
+
+  height: 100%;
+
+  background:
+    #e3aa2d;
+
+  transition:
+    width 0.25s ease;
+}
+
+
+/* =============================================
+   CONTENT CARD
+============================================= */
+
+.judge-content-card {
+  width:
+    min(1180px, 100%);
+
+  margin:
+    24px auto 0;
+
+  padding:
+    clamp(22px, 5vw, 52px);
+
+  border:
+    2px solid #082938;
+
+  border-radius:
+    24px 42px 22px 38px;
+
+  background-color:
+    #faf6ed;
+
+  background-image:
+    radial-gradient(
+      rgba(40,124,123,.2)
+      .7px,
+      transparent .7px
+    );
+
+  background-size:
+    8px 8px;
+
+  box-shadow:
+    9px 10px 0 #082938;
+}
+
+
+.judge-section-heading {
+  display: flex;
+
+  align-items:
+    flex-start;
+
+  gap: 18px;
+
+  margin-bottom:
+    28px;
+}
+
+
+.judge-section-number {
+  display: grid;
+
+  width: 58px;
+  min-width: 58px;
+
+  height: 52px;
+
+  place-items:
+    center;
+
+  transform:
+    rotate(-3deg);
+
+  border:
+    2px solid #0b3545;
+
+  background:
+    #e3aa2d;
+
+  box-shadow:
+    4px 4px 0 #0b3545;
+
+  font:
+    900
+    1.1rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-section-heading h2,
+.judge-complete-card h2 {
+  margin: 0;
+
+  color: #082938;
+
+  font:
+    clamp(1.6rem, 4vw, 2.7rem)
+    / 1.05
+    "Bricolage Grotesque",
+    sans-serif;
+}
+
+
+/* =============================================
+   TEAM SCORING
+============================================= */
+
+.judge-score-form {
+  display: grid;
+
+  gap: 22px;
+}
+
+
+.judge-team-card {
+  padding:
+    clamp(20px, 4vw, 32px);
+
+  border:
+    3px solid #0b3545;
+
+  border-radius:
+    18px 34px 20px 28px;
+
+  background:
+    #f2ecdf;
+
+  box-shadow:
+    7px 8px 0 #287c7b;
+}
+
+
+.judge-team-card-top {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    flex-start;
+
+  gap: 18px;
+}
+
+
+.judge-team-card-top span {
+  color: #287c7b;
+
+  font:
+    800
+    0.73rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-team-card-top h3 {
+  margin:
+    6px 0 0;
+
+  color: #082938;
+
+  font:
+    clamp(1.5rem, 4vw, 2.4rem)
+    / 1.05
+    "Archivo Black",
+    sans-serif;
+
+  text-transform:
+    uppercase;
+}
+
+
+.judge-category {
+  padding:
+    8px 12px;
+
+  border:
+    2px solid #0b3545;
+
+  font:
+    900
+    0.72rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-category-web {
+  background:
+    #b9cec3;
+}
+
+
+.judge-category-ml {
+  background:
+    #e3aa2d;
+}
+
+
+.judge-existing-score {
+  width:
+    fit-content;
+
+  margin-top: 18px;
+
+  padding:
+    9px 12px;
+
+  border-left:
+    4px solid #287c7b;
+
+  background:
+    #faf6ed;
+}
+
+
+.judge-existing-score strong {
+  margin-left:
+    8px;
+}
+
+
+.judge-score-entry {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  align-items:
+    end;
+
+  gap: 18px;
+
+  margin-top:
+    25px;
+}
+
+
+.judge-score-entry input {
+  max-width:
+    240px;
+
+  min-height:
+    72px;
+
+  font:
+    900
+    2rem
+    "Archivo Black",
+    sans-serif;
+}
+
+
+.judge-panel-locked {
+  padding:
+    25px;
+
+  border:
+    2px dashed #287c7b;
+
+  background:
+    #dfe9df;
+}
+
+
+.judge-panel-locked strong {
+  color: #082938;
+
+  font:
+    900
+    1.15rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-panel-locked p {
+  margin:
+    8px 0 0;
+}
+
+
+/* =============================================
+   TABLE
+============================================= */
+
+.judge-table-wrap {
+  overflow-x:
+    auto;
+
+  border:
+    2px solid #0b3545;
+
+  background:
+    #fffdf7;
+}
+
+
+.judge-table-wrap table {
+  width: 100%;
+
+  min-width: 720px;
+
+  border-collapse:
+    collapse;
+
+  text-align:
+    left;
+}
+
+
+.judge-table-wrap th {
+  padding:
+    13px;
+
+  color:
+    #faf6ed;
+
+  background:
+    #0b3545;
+
+  font:
+    800
+    0.72rem
+    "IBM Plex Mono",
+    monospace;
+
+  text-transform:
+    uppercase;
+}
+
+
+.judge-table-wrap td {
+  padding:
+    14px 13px;
+
+  border-top:
+    1px solid #b9cec3;
+
+  vertical-align:
+    middle;
+}
+
+
+.judge-status-saved,
+.judge-status-pending {
+  display:
+    inline-block;
+
+  padding:
+    6px 8px;
+
+  font:
+    900
+    0.65rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-status-saved {
+  background:
+    #b9cec3;
+}
+
+
+.judge-status-pending {
+  background:
+    #f2ecdf;
+
+  border:
+    1px solid #e3aa2d;
+}
+
+
+/* =============================================
+   COMPLETE PANEL
+============================================= */
+
+.judge-complete-card {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap: 30px;
+}
+
+
+.judge-complete-card > div:first-child {
+  max-width:
+    650px;
+}
+
+
+.judge-complete-card p {
+  line-height:
+    1.6;
+}
+
+
+.judge-complete-actions {
+  display: flex;
+
+  flex-direction:
+    column;
+
+  gap: 10px;
+
+  min-width:
+    270px;
+}
+
+
+.judge-complete-button {
+  color:
+    #082938;
+
+  background:
+    #e3aa2d;
+
+  box-shadow:
+    4px 4px 0 #287c7b;
+}
+
+
+.judge-results-button {
+  color:
+    #faf6ed;
+
+  background:
+    #287c7b;
+
+  box-shadow:
+    4px 4px 0 #082938;
+}
+
+
+.judge-complete-badge {
+  padding:
+    14px 17px;
+
+  border:
+    2px solid #0b3545;
+
+  background:
+    #b9cec3;
+
+  font:
+    900
+    0.76rem
+    "IBM Plex Mono",
+    monospace;
+
+  text-align:
+    center;
+}
+
+
+/* =============================================
+   RESULTS
+============================================= */
+
+.judge-results-hero h1 span {
+  color:
+    #287c7b;
+}
+
+
+.judge-results-hero > p:last-child {
+  max-width:
+    700px;
+
+  line-height:
+    1.65;
+}
+
+
+.judge-waiting {
+  text-align:
+    center;
+
+  padding:
+    25px;
+}
+
+
+.judge-waiting span {
+  color:
+    #287c7b;
+
+  font:
+    900
+    0.75rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-waiting h2 {
+  margin:
+    12px 0 0;
+
+  color:
+    #082938;
+
+  font:
+    clamp(3rem, 8vw, 6rem)
+    / 1
+    "Archivo Black",
+    sans-serif;
+}
+
+
+.judge-waiting p {
+  font:
+    800
+    0.75rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-panel-status-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 12px;
+
+  margin-top:
+    20px;
+}
+
+
+.judge-panel-status-grid article {
+  padding:
+    20px;
+
+  border:
+    2px solid #0b3545;
+
+  background:
+    #f2ecdf;
+}
+
+
+.judge-panel-status-grid article:nth-child(2) {
+  background:
+    #e3aa2d;
+}
+
+
+.judge-panel-status-grid span,
+.judge-panel-status-grid strong {
+  display:
+    block;
+}
+
+
+.judge-panel-status-grid span {
+  color:
+    #287c7b;
+
+  font:
+    800
+    0.7rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-panel-status-grid strong {
+  margin-top:
+    8px;
+}
+
+
+.judge-normalization-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+
+.judge-normalization-grid article {
+  padding:
+    18px;
+
+  border:
+    2px solid #0b3545;
+
+  background:
+    #f2ecdf;
+}
+
+
+.judge-normalization-grid article:nth-child(3) {
+  background:
+    #e3aa2d;
+}
+
+
+.judge-normalization-grid span {
+  display:
+    block;
+
+  color:
+    #287c7b;
+
+  font:
+    800
+    0.65rem
+    / 1.4
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-normalization-grid strong {
+  display:
+    block;
+
+  margin-top:
+    10px;
+
+  color:
+    #082938;
+
+  font:
+    2rem
+    "Archivo Black",
+    sans-serif;
+}
+
+
+.judge-podium {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 15px;
+}
+
+
+.judge-podium article {
+  padding:
+    clamp(20px, 4vw, 32px);
+
+  border:
+    2px solid #0b3545;
+
+  border-radius:
+    15px 26px 14px 22px;
+
+  background:
+    #f2ecdf;
+
+  box-shadow:
+    5px 6px 0 #b9cec3;
+}
+
+
+.judge-podium .judge-podium-1 {
+  background:
+    #e3aa2d;
+
+  box-shadow:
+    6px 7px 0 #287c7b;
+}
+
+
+.judge-podium article > span {
+  color:
+    #287c7b;
+
+  font:
+    900
+    0.8rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-podium small {
+  display:
+    block;
+
+  margin-top:
+    13px;
+
+  font:
+    700
+    0.68rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-podium h3 {
+  margin:
+    8px 0 20px;
+
+  color:
+    #082938;
+
+  font:
+    1.35rem
+    / 1.1
+    "Archivo Black",
+    sans-serif;
+
+  text-transform:
+    uppercase;
+}
+
+
+.judge-podium article > strong {
+  color:
+    #082938;
+
+  font:
+    3rem
+    "Archivo Black",
+    sans-serif;
+}
+
+
+.judge-podium article > p {
+  margin:
+    4px 0 0;
+
+  color:
+    #287c7b;
+
+  font:
+    800
+    0.65rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-tie {
+  margin-top:
+    14px;
+
+  padding:
+    8px;
+
+  border:
+    1px solid #082938;
+
+  background:
+    #faf6ed;
+
+  font:
+    800
+    0.63rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-team-id {
+  display:
+    block;
+
+  margin-top:
+    3px;
+
+  color:
+    #287c7b;
+}
+
+
+.judge-table-tie {
+  display:
+    block;
+
+  width:
+    fit-content;
+
+  margin-top:
+    3px;
+
+  padding:
+    2px 5px;
+
+  background:
+    #e3aa2d;
+}
+
+
+.judge-result-actions {
+  display: flex;
+
+  flex-wrap:
+    wrap;
+
+  gap: 12px;
+
+  margin-top:
+    25px;
+}
+
+
+/* =============================================
+   MOBILE
+============================================= */
+
+@media (max-width: 760px) {
+
+  .judge-page {
+    padding:
+      9px;
+  }
+
+
+  .judge-login-card,
+  .judge-panel-hero,
+  .judge-results-hero,
+  .judge-content-card {
+    padding:
+      23px 18px;
+
+    border-radius:
+      22px 15px 25px 17px;
+
+    box-shadow:
+      6px 7px 0 #082938;
+  }
+
+
+  .judge-login-card h1,
+  .judge-panel-hero h1,
+  .judge-results-hero h1 {
+    font-size:
+      clamp(
+        2.6rem,
+        13vw,
+        4.5rem
+      );
+  }
+
+
+  .judge-panel-summary,
+  .judge-panel-status-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+
+  .judge-panel-top {
+    flex-direction:
+      column;
+  }
+
+
+  .judge-section-heading {
+    gap:
+      12px;
+  }
+
+
+  .judge-section-number {
+    width:
+      47px;
+
+    min-width:
+      47px;
+
+    height:
+      44px;
+  }
+
+
+  .judge-score-entry {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .judge-score-entry input {
+    max-width:
+      100%;
+  }
+
+
+  .judge-team-card-top {
+    flex-direction:
+      column;
+  }
+
+
+  .judge-complete-card {
+    flex-direction:
+      column;
+
+    align-items:
+      stretch;
+  }
+
+
+  .judge-complete-actions {
+    min-width:
+      0;
+  }
+
+
+  .judge-normalization-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .judge-normalization-grid article:nth-child(3) {
+    grid-column:
+      1 / -1;
+  }
+
+
+  .judge-podium {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .judge-podium .judge-podium-1 {
+    order:
+      -1;
+  }
+
+}
+/* =====================================================
+   NEW TEZHACK JUDGING LOGIN
+===================================================== */
+
+.judge-login-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(360px, 0.72fr);
+
+  align-items: center;
+
+  gap:
+    clamp(40px, 6vw, 90px);
+
+  width:
+    min(1180px, 100%);
+
+  min-height:
+    min(650px, calc(100svh - 70px));
+
+  margin:
+    auto;
+
+  padding:
+    clamp(35px, 5vw, 65px);
+
+  background-color:
+    #f2ecdf;
+
+  background-image:
+    radial-gradient(
+      rgba(40, 124, 123, 0.18)
+      0.7px,
+      transparent 0.7px
+    );
+
+  background-size:
+    8px 8px;
+
+  border:
+    2px solid #082938;
+
+  border-radius:
+    42px 18px 40px 24px;
+
+  box-shadow:
+    11px 13px 0 #082938;
+}
+
+
+/* folded paper corner */
+
+.judge-login-fold {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 120px;
+  height: 120px;
+
+  background:
+    #b9cec3;
+
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      100% 100%
+    );
+
+  z-index: -1;
+}
+
+
+/* =====================================================
+   LEFT SIDE
+===================================================== */
+
+.judge-login-left {
+  min-width: 0;
+}
+
+
+.judge-login-logo {
+  width: fit-content;
+  max-width: calc(100% - 60px);
+}
+
+
+.judge-login-logo
+.th26-title-paper {
+  padding:
+    clamp(9px, 1vw, 14px)
+    clamp(20px, 2.4vw, 38px);
+}
+
+
+.judge-login-logo
+.th26-title-paper h1 {
+  font-size:
+    clamp(
+      4rem,
+      6.5vw,
+      7rem
+    );
+}
+
+
+.judge-login-logo
+.th26-year-paper {
+  top: 8px;
+  right: -61px;
+}
+
+
+.judge-console-paper {
+  width: fit-content;
+
+  margin:
+    -2px
+    auto
+    0;
+
+  padding:
+    7px
+    clamp(24px, 3vw, 40px)
+    9px;
+
+  color:
+    #faf6ed;
+
+  background:
+    #287c7b;
+
+  font-family:
+    "Bricolage Grotesque",
+    sans-serif;
+
+  font-size:
+    clamp(
+      1.35rem,
+      2.5vw,
+      2.3rem
+    );
+
+  font-weight:
+    800;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.035em;
+
+  text-transform:
+    uppercase;
+
+  clip-path:
+    polygon(
+      1% 7%,
+      13% 2%,
+      28% 6%,
+      43% 2%,
+      58% 6%,
+      73% 2%,
+      88% 6%,
+      99% 3%,
+      98% 93%,
+      83% 98%,
+      67% 94%,
+      50% 99%,
+      33% 95%,
+      16% 98%,
+      1% 93%
+    );
+
+  filter:
+    drop-shadow(
+      4px
+      5px
+      0
+      rgba(11, 53, 69, 0.15)
+    );
+}
+
+
+.judge-login-description {
+  max-width:
+    580px;
+
+  margin:
+    25px 0 0;
+
+  color:
+    #496570;
+
+  font-size:
+    clamp(
+      0.95rem,
+      1.4vw,
+      1.08rem
+    );
+
+  line-height:
+    1.65;
+}
+
+
+/* group information */
+
+.judge-login-info {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    12px;
+
+  max-width:
+    620px;
+
+  margin-top:
+    32px;
+}
+
+
+.judge-login-info article {
+  padding:
+    17px 18px;
+
+  background:
+    #faf6ed;
+
+  border:
+    2px solid #0b3545;
+
+  border-radius:
+    12px 20px 11px 17px;
+
+  box-shadow:
+    4px 5px 0 #b9cec3;
+}
+
+
+.judge-login-info article:nth-child(2) {
+  background:
+    #e3aa2d;
+
+  box-shadow:
+    4px 5px 0 #287c7b;
+}
+
+
+.judge-login-info span {
+  display:
+    block;
+
+  color:
+    #287c7b;
+
+  font:
+    800
+    0.67rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-login-info article:nth-child(2) span {
+  color:
+    #0b3545;
+}
+
+
+.judge-login-info strong {
+  display:
+    block;
+
+  margin-top:
+    7px;
+
+  color:
+    #082938;
+
+  font:
+    800
+    1.25rem
+    "Bricolage Grotesque",
+    sans-serif;
+}
+
+
+.judge-login-info small {
+  display:
+    block;
+
+  margin-top:
+    3px;
+
+  color:
+    #526a71;
+}
+
+
+/* =====================================================
+   LOGIN PANEL
+===================================================== */
+
+.judge-login-panel {
+  position: relative;
+
+  padding:
+    clamp(
+      24px,
+      3vw,
+      35px
+    );
+
+  background:
+    #faf6ed;
+
+  border:
+    2px solid #082938;
+
+  border-radius:
+    18px 32px 17px 27px;
+
+  box-shadow:
+    7px 8px 0 #b9cec3;
+}
+
+
+.judge-login-small-title {
+  margin:
+    0 0 6px;
+
+  color:
+    #287c7b;
+
+  font:
+    800
+    0.7rem
+    "IBM Plex Mono",
+    monospace;
+
+  letter-spacing:
+    0.13em;
+}
+
+
+.judge-login-panel h2 {
+  margin:
+    0;
+
+  color:
+    #082938;
+
+  font:
+    clamp(
+      1.8rem,
+      3vw,
+      2.8rem
+    )
+    / 1
+    "Bricolage Grotesque",
+    sans-serif;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+.judge-login-panel h2 span {
+  display:
+    block;
+
+  color:
+    #e3aa2d;
+}
+
+
+/* =====================================================
+   PANEL SELECTION
+===================================================== */
+
+.judge-panel-picks {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:
+    9px;
+
+  margin-top:
+    23px;
+}
+
+
+.judge-panel-pick {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    11px;
+
+  min-height:
+    70px;
+
+  padding:
+    11px;
+
+  color:
+    #0b3545;
+
+  background:
+    #f2ecdf;
+
+  border:
+    2px solid #0b3545;
+
+  border-radius:
+    10px 15px 9px 13px;
+
+  cursor:
+    pointer;
+
+  text-align:
+    left;
+
+  box-shadow:
+    none;
+
+  transition:
+    transform 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease;
+}
+
+
+.judge-panel-pick:hover {
+  transform:
+    translateY(-2px);
+}
+
+
+.judge-panel-pick.active {
+  background:
+    #e3aa2d;
+
+  box-shadow:
+    3px 4px 0 #287c7b;
+}
+
+
+.judge-panel-pick small {
+  display:
+    grid;
+
+  flex:
+    0 0 38px;
+
+  width:
+    38px;
+
+  height:
+    38px;
+
+  place-items:
+    center;
+
+  color:
+    #faf6ed;
+
+  background:
+    #0b3545;
+
+  font:
+    900
+    0.72rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-panel-pick strong,
+.judge-panel-pick span {
+  display:
+    block;
+}
+
+
+.judge-panel-pick strong {
+  font:
+    900
+    0.72rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-panel-pick span {
+  margin-top:
+    3px;
+
+  color:
+    #526a71;
+
+  font-size:
+    0.78rem;
+}
+
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+.judge-password-field {
+  display:
+    grid;
+
+  gap:
+    8px;
+
+  margin-top:
+    22px;
+}
+
+
+.judge-password-field > span {
+  color:
+    #0b3545;
+
+  font:
+    800
+    0.67rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-password-field input {
+  width:
+    100%;
+
+  min-height:
+    52px;
+
+  padding:
+    12px 14px;
+
+  color:
+    #123c4b;
+
+  background:
+    #fffdf7;
+
+  border:
+    2px solid #0b3545;
+
+  border-radius:
+    10px 15px 9px 13px;
+
+  font:
+    650
+    0.95rem
+    "Manrope",
+    sans-serif;
+}
+
+
+.judge-password-field input:focus {
+  outline:
+    4px solid
+    rgba(
+      227,
+      170,
+      45,
+      0.45
+    );
+
+  outline-offset:
+    2px;
+}
+
+
+/* =====================================================
+   ENTER BUTTON
+===================================================== */
+
+.judge-login-submit {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    25px;
+
+  width:
+    100%;
+
+  min-height:
+    56px;
+
+  margin-top:
+    20px;
+
+  padding:
+    12px
+    13px
+    12px
+    19px;
+
+  color:
+    #faf6ed;
+
+  background:
+    #0b3545;
+
+  border:
+    2px solid #082938;
+
+  border-radius:
+    12px 8px 13px 9px;
+
+  box-shadow:
+    4px 5px 0 #e3aa2d;
+
+  cursor:
+    pointer;
+
+  font:
+    900
+    0.75rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-login-submit b {
+  display:
+    grid;
+
+  width:
+    31px;
+
+  height:
+    31px;
+
+  place-items:
+    center;
+
+  color:
+    #082938;
+
+  background:
+    #e3aa2d;
+
+  border-radius:
+    50%;
+
+  font-size:
+    1rem;
+}
+
+
+.judge-login-submit:disabled {
+  opacity:
+    0.5;
+
+  cursor:
+    not-allowed;
+}
+
+
+.judge-login-note {
+  margin:
+    18px 0 0;
+
+  padding:
+    10px 12px;
+
+  color:
+    #526a71;
+
+  background:
+    #f2ecdf;
+
+  border-left:
+    4px solid #287c7b;
+
+  font-size:
+    0.76rem;
+
+  line-height:
+    1.5;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .judge-login-shell {
+    display:
+      block;
+
+    min-height:
+      auto;
+
+    padding:
+      27px 19px 30px;
+
+    border-radius:
+      25px 15px 28px 18px;
+
+    box-shadow:
+      6px 7px 0 #082938;
+  }
+
+
+  .judge-login-logo {
+    max-width:
+      calc(100% - 35px);
+  }
+
+
+  .judge-login-logo
+  .th26-title-paper {
+    padding:
+      8px 12px;
+  }
+
+
+  .judge-login-logo
+  .th26-title-paper h1 {
+    font-size:
+      clamp(
+        2.8rem,
+        13vw,
+        4rem
+      );
+  }
+
+
+  .judge-login-logo
+  .th26-year-paper {
+    top:
+      5px;
+
+    right:
+      -37px;
+
+    padding:
+      5px 7px;
+
+    font-size:
+      0.68rem;
+  }
+
+
+  .judge-console-paper {
+    margin-left:
+      15px;
+
+    padding:
+      6px 15px 8px;
+
+    font-size:
+      clamp(
+        1rem,
+        5.5vw,
+        1.45rem
+      );
+  }
+
+
+  .judge-login-description {
+    margin-top:
+      16px;
+
+    font-size:
+      0.88rem;
+  }
+
+
+  .judge-login-info {
+    margin-top:
+      20px;
+  }
+
+
+  .judge-login-info article {
+    padding:
+      13px;
+  }
+
+
+  .judge-login-panel {
+    margin-top:
+      28px;
+
+    padding:
+      20px 16px;
+
+    box-shadow:
+      5px 6px 0 #b9cec3;
+  }
+
+
+  .judge-panel-picks {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+
+  .judge-panel-pick {
+    min-height:
+      65px;
+
+    padding:
+      8px;
+  }
+
+
+  .judge-panel-pick small {
+    flex-basis:
+      32px;
+
+    width:
+      32px;
+
+    height:
+      32px;
+  }
+
+}
+/* =========================================
+   TEZHACK 2026 JUDGING
+========================================= */
+
+.judge-page {
+  min-height: 100vh;
+  padding: clamp(12px, 4vw, 52px);
+
+  color: #123c4b;
+  background: #0b3545;
+
+  font-family: "Manrope", sans-serif;
+}
+
+
+/* =========================================
+   COMMON PAPER
+========================================= */
+
+.judge-login-shell,
+.judge-panel-hero,
+.judge-results-hero,
+.judge-content-card {
+  width: min(1180px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+
+  border: 2px solid #082938;
+
+  background-color: #f2ecdf;
+
+  background-image:
+    radial-gradient(
+      rgba(40, 124, 123, 0.18)
+      0.7px,
+      transparent 0.7px
+    );
+
+  background-size: 8px 8px;
+
+  box-shadow: 9px 10px 0 #082938;
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+.judge-login-shell {
+  position: relative;
+  overflow: hidden;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(350px, 0.75fr);
+
+  align-items: center;
+
+  gap: clamp(40px, 6vw, 90px);
+
+  min-height:
+    min(650px, calc(100svh - 70px));
+
+  padding:
+    clamp(32px, 5vw, 64px);
+
+  border-radius:
+    42px 18px 40px 24px;
+}
+
+
+.judge-corner-fold {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 120px;
+  height: 120px;
+
+  background: #b9cec3;
+
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      100% 100%
+    );
+}
+
+
+.judge-handwritten {
+  margin: 0 0 8px;
+
+  color: #287c7b;
+
+  font:
+    700
+    clamp(1rem, 2vw, 1.35rem)
+    / 1.2
+    "Kalam",
+    cursive;
+}
+
+
+.judge-tezhack-lockup {
+  position: relative;
+
+  width: fit-content;
+  max-width: calc(100% - 60px);
+}
+
+
+.judge-tezhack-paper {
+  padding:
+    clamp(9px, 1vw, 14px)
+    clamp(20px, 2.5vw, 40px);
+
+  color: #f2ecdf;
+  background-color: #22292b;
+
+  background-image:
+    linear-gradient(
+      rgba(242, 236, 223, 0.11)
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(242, 236, 223, 0.11)
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    24px 24px;
+
+  clip-path:
+    polygon(
+      1% 4%,
+      14% 1%,
+      28% 4%,
+      43% 1%,
+      57% 4%,
+      72% 1%,
+      86% 4%,
+      99% 2%,
+      98% 95%,
+      84% 98%,
+      69% 95%,
+      54% 99%,
+      39% 96%,
+      24% 99%,
+      10% 95%,
+      1% 97%
+    );
+
+  filter:
+    drop-shadow(
+      7px 8px 0
+      rgba(11, 53, 69, 0.17)
+    );
+
+  font:
+    clamp(4rem, 7vw, 7rem)
+    / 0.92
+    "Archivo Black",
+    sans-serif;
+
+  letter-spacing: -0.065em;
+}
+
+
+.judge-year {
+  position: absolute;
+
+  top: 8px;
+  right: -60px;
+
+  padding: 7px 10px;
+
+  color: #faf6ed;
+  background: #287c7b;
+
+  font:
+    800
+    1rem
+    "Barlow Condensed",
+    sans-serif;
+
+  transform: rotate(2deg);
+}
+
+
+.judge-console-strip {
+  width: fit-content;
+
+  margin: -2px auto 0;
+
+  padding:
+    7px
+    clamp(23px, 3vw, 40px)
+    9px;
+
+  color: #faf6ed;
+  background: #287c7b;
+
+  font:
+    800
+    clamp(1.2rem, 2.5vw, 2.2rem)
+    / 1
+    "Bricolage Grotesque",
+    sans-serif;
+
+  letter-spacing: 0.035em;
+
+  clip-path:
+    polygon(
+      1% 7%,
+      13% 2%,
+      28% 6%,
+      43% 2%,
+      58% 6%,
+      73% 2%,
+      88% 6%,
+      99% 3%,
+      98% 93%,
+      83% 98%,
+      67% 94%,
+      50% 99%,
+      33% 95%,
+      16% 98%,
+      1% 93%
+    );
+}
+
+
+.judge-login-description {
+  max-width: 550px;
+
+  margin: 24px 0 0;
+
+  color: #496570;
+
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+.judge-group-info {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 11px;
+
+  margin-top: 27px;
+}
+
+
+.judge-group-info article {
+  padding: 17px;
+
+  border: 2px solid #0b3545;
+
+  border-radius:
+    12px 20px 11px 17px;
+
+  background: #faf6ed;
+
+  box-shadow:
+    4px 5px 0 #b9cec3;
+}
+
+
+.judge-group-info article:nth-child(2) {
+  background: #e3aa2d;
+
+  box-shadow:
+    4px 5px 0 #287c7b;
+}
+
+
+.judge-group-info span {
+  display: block;
+
+  color: #287c7b;
+
+  font:
+    800
+    0.67rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-group-info strong {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #082938;
+
+  font-size: 1.2rem;
+}
+
+
+.judge-group-info small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #526a71;
+}
+
+
+/* =========================================
+   ACCESS CARD
+========================================= */
+
+.judge-access-card {
+  padding:
+    clamp(23px, 3vw, 34px);
+
+  border: 2px solid #082938;
+
+  border-radius:
+    18px 32px 17px 27px;
+
+  background: #faf6ed;
+
+  box-shadow:
+    7px 8px 0 #b9cec3;
+}
+
+
+.judge-mono-label {
+  color: #287c7b;
+
+  font:
+    800
+    0.68rem
+    "IBM Plex Mono",
+    monospace;
+
+  letter-spacing: 0.12em;
+}
+
+
+.judge-access-card h2 {
+  margin: 5px 0 0;
+
+  color: #082938;
+
+  font:
+    clamp(1.8rem, 3vw, 2.8rem)
+    / 1
+    "Bricolage Grotesque",
+    sans-serif;
+}
+
+
+.judge-access-card h2 strong {
+  display: block;
+
+  color: #e3aa2d;
+}
+
+
+.judge-panel-options {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 9px;
+
+  margin-top: 23px;
+}
+
+
+.judge-panel-option {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-height: 68px;
+
+  padding: 10px;
+
+  color: #082938;
+  background: #f2ecdf;
+
+  border: 2px solid #0b3545;
+
+  border-radius:
+    10px 15px 9px 13px;
+
+  cursor: pointer;
+}
+
+
+.judge-panel-option.active {
+  background: #e3aa2d;
+
+  box-shadow:
+    3px 4px 0 #287c7b;
+}
+
+
+.judge-panel-option > b {
+  display: grid;
+
+  width: 37px;
+  height: 37px;
+
+  place-items: center;
+
+  color: #faf6ed;
+  background: #0b3545;
+
+  font:
+    900
+    0.72rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-panel-option span {
+  text-align: left;
+}
+
+
+.judge-panel-option strong,
+.judge-panel-option small {
+  display: block;
+}
+
+
+.judge-panel-option strong {
+  font:
+    900
+    0.7rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-panel-option small {
+  margin-top: 3px;
+
+  color: #526a71;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.judge-field {
+  display: grid;
+
+  gap: 8px;
+
+  margin-top: 22px;
+}
+
+
+.judge-field > span {
+  color: #0b3545;
+
+  font:
+    800
+    0.68rem
+    "IBM Plex Mono",
+    monospace;
+
+  text-transform: uppercase;
+}
+
+
+.judge-field input,
+.judge-field select,
+.judge-score-form select {
+  width: 100%;
+
+  min-height: 52px;
+
+  padding: 11px 14px;
+
+  color: #123c4b;
+  background: #fffdf7;
+
+  border: 2px solid #0b3545;
+
+  border-radius:
+    10px 15px 9px 13px;
+
+  font:
+    650
+    0.95rem
+    "Manrope",
+    sans-serif;
+}
+
+
+.judge-field input:focus,
+.judge-field select:focus {
+  outline:
+    4px solid
+    rgba(227, 170, 45, 0.45);
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.judge-primary-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  width: 100%;
+
+  min-height: 53px;
+
+  margin-top: 20px;
+
+  padding: 11px 13px 11px 18px;
+
+  color: #faf6ed;
+  background: #0b3545;
+
+  border: 2px solid #082938;
+
+  border-radius:
+    12px 8px 13px 9px;
+
+  box-shadow:
+    4px 5px 0 #e3aa2d;
+
+  cursor: pointer;
+
+  font:
+    900
+    0.74rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-primary-button b {
+  display: grid;
+
+  width: 30px;
+  height: 30px;
+
+  place-items: center;
+
+  color: #082938;
+  background: #e3aa2d;
+
+  border-radius: 50%;
+}
+
+
+.judge-secondary-button {
+  padding: 10px 15px;
+
+  color: #082938;
+  background: #faf6ed;
+
+  border: 2px solid #082938;
+
+  cursor: pointer;
+
+  font:
+    800
+    0.7rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+/* =========================================
+   MESSAGES
+========================================= */
+
+.judge-error,
+.judge-success {
+  margin-top: 16px;
+
+  padding: 13px 15px;
+
+  font-weight: 750;
+}
+
+
+.judge-error {
+  border-left: 5px solid #b34a3c;
+
+  color: #762f27;
+  background: #f6ddd6;
+}
+
+
+.judge-success {
+  border-left: 5px solid #287c7b;
+
+  background: #dfe9df;
+}
+
+
+.judge-access-note {
+  margin: 18px 0 0;
+
+  padding: 10px 12px;
+
+  color: #526a71;
+
+  background: #f2ecdf;
+
+  border-left: 4px solid #287c7b;
+
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   PANEL HERO
+========================================= */
+
+.judge-panel-hero,
+.judge-results-hero {
+  position: relative;
+
+  margin-bottom: 22px;
+
+  padding:
+    clamp(27px, 5vw, 52px);
+
+  border-radius:
+    38px 18px 42px 24px;
+}
+
+
+.judge-panel-hero {
+  display: grid;
+
+  grid-template-columns:
+    1fr auto;
+
+  gap: 25px;
+}
+
+
+.judge-panel-hero h1,
+.judge-results-hero h1 {
+  margin: 0;
+
+  color: #082938;
+
+  font:
+    clamp(2.7rem, 7vw, 5.5rem)
+    / 0.92
+    "Archivo Black",
+    sans-serif;
+
+  letter-spacing: -0.055em;
+}
+
+
+.judge-panel-hero h1 span,
+.judge-results-hero h1 span {
+  display: block;
+
+  color: #e3aa2d;
+
+  font-size: 0.55em;
+}
+
+
+.judge-progress-area {
+  grid-column: 1 / -1;
+
+  max-width: 650px;
+
+  margin-top: 5px;
+}
+
+
+.judge-progress-heading {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 6px;
+}
+
+
+.judge-progress-heading strong {
+  color: #082938;
+
+  font:
+    2.8rem
+    "Archivo Black",
+    sans-serif;
+}
+
+
+.judge-progress-heading span {
+  color: #287c7b;
+
+  font:
+    900
+    0.75rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-progress-bar {
+  overflow: hidden;
+
+  height: 14px;
+
+  margin-top: 7px;
+
+  border: 2px solid #0b3545;
+
+  background: #faf6ed;
+}
+
+
+.judge-progress-bar span {
+  display: block;
+
+  height: 100%;
+
+  background: #e3aa2d;
+}
+
+
+.judge-progress-area small {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #526a71;
+}
+
+
+/* =========================================
+   CONTENT CARDS
+========================================= */
+
+.judge-content-card {
+  margin-top: 22px;
+
+  padding:
+    clamp(22px, 5vw, 48px);
+
+  border-radius:
+    24px 42px 22px 38px;
+}
+
+
+.judge-section-heading {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 17px;
+
+  margin-bottom: 26px;
+}
+
+
+.judge-section-number {
+  display: grid;
+
+  width: 55px;
+  min-width: 55px;
+  height: 50px;
+
+  place-items: center;
+
+  color: #082938;
+  background: #e3aa2d;
+
+  border: 2px solid #0b3545;
+
+  box-shadow:
+    4px 4px 0 #0b3545;
+
+  transform: rotate(-3deg);
+
+  font:
+    900
+    1rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-section-heading h2,
+.judge-complete-section h2 {
+  margin: 0;
+
+  color: #082938;
+
+  font:
+    clamp(1.5rem, 4vw, 2.6rem)
+    / 1.05
+    "Bricolage Grotesque",
+    sans-serif;
+}
+
+
+/* =========================================
+   SCORE CARD
+========================================= */
+
+.judge-score-form {
+  display: grid;
+
+  gap: 22px;
+}
+
+
+.judge-score-form > .judge-field {
+  margin-top: 0;
+}
+
+
+.judge-score-card {
+  padding:
+    clamp(20px, 4vw, 32px);
+
+  border: 3px solid #0b3545;
+
+  border-radius:
+    18px 34px 20px 28px;
+
+  background: #f2ecdf;
+
+  box-shadow:
+    7px 8px 0 #287c7b;
+}
+
+
+.judge-score-card-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 18px;
+}
+
+
+.judge-score-card-top > div > span {
+  color: #287c7b;
+
+  font:
+    800
+    0.7rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-score-card-top h3 {
+  margin: 5px 0 0;
+
+  color: #082938;
+
+  font:
+    clamp(1.4rem, 4vw, 2.3rem)
+    / 1.05
+    "Archivo Black",
+    sans-serif;
+
+  text-transform: uppercase;
+}
+
+
+.judge-type {
+  height: fit-content;
+
+  padding: 8px 12px;
+
+  border: 2px solid #0b3545;
+
+  font:
+    900
+    0.7rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-type-web {
+  background: #b9cec3;
+}
+
+
+.judge-type-ml {
+  background: #e3aa2d;
+}
+
+
+.judge-existing {
+  width: fit-content;
+
+  margin-top: 17px;
+
+  padding: 8px 11px;
+
+  background: #faf6ed;
+
+  border-left: 4px solid #287c7b;
+}
+
+
+.judge-existing strong {
+  margin-left: 8px;
+}
+
+
+.judge-score-input-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  align-items: end;
+
+  gap: 18px;
+
+  margin-top: 24px;
+}
+
+
+.judge-score-input-row .judge-field {
+  margin-top: 0;
+}
+
+
+.judge-score-input {
+  max-width: 230px;
+
+  min-height: 72px !important;
+
+  font:
+    900
+    2rem
+    "Archivo Black",
+    sans-serif !important;
+}
+
+
+.judge-score-input-row
+.judge-primary-button {
+  width: auto;
+
+  min-width: 190px;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.judge-table-wrap {
+  overflow-x: auto;
+
+  border: 2px solid #0b3545;
+
+  background: #fffdf7;
+}
+
+
+.judge-table-wrap table {
+  width: 100%;
+
+  min-width: 720px;
+
+  border-collapse: collapse;
+
+  text-align: left;
+}
+
+
+.judge-table-wrap th {
+  padding: 13px;
+
+  color: #faf6ed;
+  background: #0b3545;
+
+  font:
+    800
+    0.71rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-table-wrap td {
+  padding: 14px 13px;
+
+  border-top:
+    1px solid #b9cec3;
+}
+
+
+.judge-status {
+  display: inline-block;
+
+  padding: 6px 8px;
+
+  font:
+    900
+    0.63rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-status.saved {
+  background: #b9cec3;
+}
+
+
+.judge-status.pending {
+  background: #f2ecdf;
+
+  border:
+    1px solid #e3aa2d;
+}
+
+
+/* =========================================
+   COMPLETE
+========================================= */
+
+.judge-complete-section {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 30px;
+}
+
+
+.judge-complete-section > div:first-child {
+  max-width: 620px;
+}
+
+
+.judge-complete-section p {
+  line-height: 1.6;
+}
+
+
+.judge-complete-actions {
+  display: grid;
+
+  gap: 10px;
+
+  min-width: 250px;
+}
+
+
+.judge-lock-button,
+.judge-result-button {
+  min-height: 48px;
+
+  padding: 12px 17px;
+
+  border: 2px solid #082938;
+
+  cursor: pointer;
+
+  font:
+    900
+    0.72rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-lock-button {
+  color: #082938;
+  background: #e3aa2d;
+
+  box-shadow:
+    4px 4px 0 #287c7b;
+}
+
+
+.judge-lock-button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+
+.judge-result-button {
+  color: #faf6ed;
+  background: #287c7b;
+
+  box-shadow:
+    4px 4px 0 #082938;
+}
+
+
+.judge-complete-badge {
+  padding: 13px;
+
+  border: 2px solid #082938;
+
+  background: #b9cec3;
+
+  text-align: center;
+
+  font:
+    900
+    0.72rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-locked {
+  padding: 22px;
+
+  border: 2px dashed #287c7b;
+
+  background: #dfe9df;
+}
+
+
+/* =========================================
+   RESULTS
+========================================= */
+
+.judge-results-hero > p:last-child {
+  max-width: 700px;
+
+  line-height: 1.65;
+}
+
+
+.judge-waiting {
+  text-align: center;
+}
+
+
+.judge-waiting > span {
+  color: #287c7b;
+
+  font:
+    900
+    0.72rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-waiting h2 {
+  margin: 12px 0 0;
+
+  color: #082938;
+
+  font:
+    clamp(3rem, 8vw, 6rem)
+    / 1
+    "Archivo Black",
+    sans-serif;
+}
+
+
+.judge-panel-status-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 12px;
+
+  margin-top: 25px;
+}
+
+
+.judge-panel-status-grid article {
+  padding: 20px;
+
+  border: 2px solid #0b3545;
+
+  background: #f2ecdf;
+}
+
+
+.judge-panel-status-grid article:nth-child(2) {
+  background: #e3aa2d;
+}
+
+
+.judge-panel-status-grid span,
+.judge-panel-status-grid strong {
+  display: block;
+}
+
+
+.judge-panel-status-grid span {
+  color: #287c7b;
+
+  font:
+    800
+    0.7rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-panel-status-grid strong {
+  margin-top: 7px;
+}
+
+
+.judge-back-button {
+  max-width: 260px;
+}
+
+
+/* Normalization */
+
+.judge-normalization-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+
+.judge-normalization-grid article {
+  padding: 17px;
+
+  border: 2px solid #0b3545;
+
+  background: #f2ecdf;
+}
+
+
+.judge-normalization-grid
+.reference {
+  background: #e3aa2d;
+}
+
+
+.judge-normalization-grid span {
+  display: block;
+
+  color: #287c7b;
+
+  font:
+    800
+    0.64rem
+    / 1.4
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-normalization-grid strong {
+  display: block;
+
+  margin-top: 9px;
+
+  color: #082938;
+
+  font:
+    2rem
+    "Archivo Black",
+    sans-serif;
+}
+
+
+/* Podium */
+
+.judge-podium {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 14px;
+}
+
+
+.judge-podium article {
+  padding:
+    clamp(19px, 4vw, 30px);
+
+  border: 2px solid #0b3545;
+
+  border-radius:
+    15px 26px 14px 22px;
+
+  background: #f2ecdf;
+
+  box-shadow:
+    5px 6px 0 #b9cec3;
+}
+
+
+.judge-podium article.winner {
+  background: #e3aa2d;
+
+  box-shadow:
+    6px 7px 0 #287c7b;
+}
+
+
+.judge-podium article > span {
+  color: #287c7b;
+
+  font:
+    900
+    0.8rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-podium small {
+  display: block;
+
+  margin-top: 12px;
+
+  font:
+    700
+    0.67rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-podium h3 {
+  margin: 8px 0 18px;
+
+  color: #082938;
+
+  font:
+    1.3rem
+    / 1.1
+    "Archivo Black",
+    sans-serif;
+}
+
+
+.judge-podium article > strong {
+  color: #082938;
+
+  font:
+    3rem
+    "Archivo Black",
+    sans-serif;
+}
+
+
+.judge-podium article > p {
+  margin: 4px 0 0;
+
+  color: #287c7b;
+
+  font:
+    800
+    0.64rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-tie {
+  margin-top: 13px;
+
+  padding: 7px;
+
+  border: 1px solid #082938;
+
+  background: #faf6ed;
+
+  font:
+    800
+    0.62rem
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.judge-team-id {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #287c7b;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+
+  .judge-page {
+    padding: 8px;
+  }
+
+
+  .judge-login-shell {
+    display: block;
+
+    min-height: auto;
+
+    padding: 26px 18px;
+
+    border-radius:
+      25px 15px 28px 18px;
+
+    box-shadow:
+      6px 7px 0 #082938;
+  }
+
+
+  .judge-tezhack-paper {
+    padding: 8px 12px;
+
+    font-size:
+      clamp(
+        2.8rem,
+        13vw,
+        4rem
+      );
+  }
+
+
+  .judge-year {
+    top: 5px;
+    right: -36px;
+
+    padding: 5px 7px;
+
+    font-size: 0.7rem;
+  }
+
+
+  .judge-console-strip {
+    margin-left: 14px;
+
+    padding: 6px 16px 8px;
+
+    font-size:
+      clamp(
+        1rem,
+        5.5vw,
+        1.45rem
+      );
+  }
+
+
+  .judge-group-info {
+    margin-top: 19px;
+  }
+
+
+  .judge-access-card {
+    margin-top: 28px;
+
+    padding: 20px 16px;
+  }
+
+
+  .judge-panel-hero,
+  .judge-results-hero,
+  .judge-content-card {
+    padding: 22px 17px;
+
+    box-shadow:
+      6px 7px 0 #082938;
+  }
+
+
+  .judge-panel-hero {
+    grid-template-columns: 1fr;
+  }
+
+
+  .judge-panel-hero h1,
+  .judge-results-hero h1 {
+    font-size:
+      clamp(
+        2.6rem,
+        13vw,
+        4.2rem
+      );
+  }
+
+
+  .judge-score-card-top {
+    flex-direction: column;
+  }
+
+
+  .judge-score-input-row {
+    grid-template-columns: 1fr;
+  }
+
+
+  .judge-score-input {
+    max-width: 100%;
+  }
+
+
+  .judge-score-input-row
+  .judge-primary-button {
+    width: 100%;
+  }
+
+
+  .judge-complete-section {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .judge-complete-actions {
+    min-width: 0;
+  }
+
+
+  .judge-normalization-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .judge-normalization-grid
+  .reference {
+    grid-column: 1 / -1;
+  }
+
+
+  .judge-podium {
+    grid-template-columns: 1fr;
+  }
+
+}

@@ -8,10 +8,18 @@ import TeamCallerPage from "./pages/TeamCallerPage";
 import TeamAllocationsPage from "./pages/TeamAllocationsPage";
 import FinalCommit from "./pages/FinalCommit";
 
+import JudgingLoginPage from "./pages/JudgingLoginPage";
+import JudgingPanelPage from "./pages/JudgingPanelPage";
+import JudgingResultsPage from "./pages/JudgingResultsPage";
+
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+
+      <Route
+        path="/"
+        element={<HomePage />}
+      />
 
       <Route
         path="/problem-statements"
@@ -42,6 +50,28 @@ function App() {
         path="/final"
         element={<FinalCommit />}
       />
+
+      {/* JUDGING */}
+
+      <Route
+  path="/judging"
+  element={<JudgingLoginPage />}
+/>
+
+<Route
+  path="/judging/panel"
+  element={<JudgingPanelPage />}
+/>
+
+<Route
+  path="/judging/results"
+  element={<JudgingResultsPage />}
+/>
+
+<Route
+  path="/judging/results"
+  element={<JudgingResultsPage />}
+/>
     </Routes>
   );
 }
