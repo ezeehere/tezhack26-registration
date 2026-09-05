@@ -1,7 +1,7 @@
 const API_URL = "/api/judging";
 
 async function request(payload) {
-  const response = await fetch(API_URL, {
+  const response = await fetch("/api/judging", {
     method: "POST",
 
     headers: {
@@ -13,25 +13,33 @@ async function request(payload) {
 
   const text = await response.text();
 
+  console.log(
+    "Judging server response:",
+    response.status,
+    text
+  );
+
   let data;
 
   try {
     data = JSON.parse(text);
   } catch {
     throw new Error(
-      "Invalid response from judging server."
+      `Invalid judging server response (${response.status}). Check console.`
     );
   }
 
   if (!response.ok) {
     throw new Error(
-      data.error || "Judging server request failed."
+      data.error ||
+      `Server error ${response.status}`
     );
   }
 
   if (!data.ok) {
     throw new Error(
-      data.error || "Judging request failed."
+      data.error ||
+      "Judging request failed."
     );
   }
 
