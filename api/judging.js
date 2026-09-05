@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  // Simple browser test
   if (req.method === "GET") {
     return res.status(200).json({
       ok: true,
@@ -7,7 +6,6 @@ export default async function handler(req, res) {
     });
   }
 
-  // Judging website uses POST
   if (req.method !== "POST") {
     return res.status(405).json({
       ok: false,
@@ -22,13 +20,14 @@ export default async function handler(req, res) {
     return res.status(500).json({
       ok: false,
       error:
-        "JUDGING_APPS_SCRIPT_URL is missing on Vercel.",
+        "JUDGING_APPS_SCRIPT_URL is missing.",
     });
   }
 
   try {
-    const appsScriptResponse =
-      await fetch(scriptUrl, {
+    const response = await fetch(
+      scriptUrl,
+      {
         method: "POST",
 
         headers: {
@@ -41,10 +40,11 @@ export default async function handler(req, res) {
         ),
 
         redirect: "follow",
-      });
+      }
+    );
 
     const text =
-      await appsScriptResponse.text();
+      await response.text();
 
     let data;
 
@@ -59,23 +59,20 @@ export default async function handler(req, res) {
       return res.status(502).json({
         ok: false,
         error:
-          "Apps Script returned an invalid response.",
+          "Apps Script returned invalid JSON.",
       });
     }
 
     return res.status(200).json(data);
 
   } catch (error) {
-    console.error(
-      "Judging API error:",
-      error
-    );
+    console.error(error);
 
     return res.status(500).json({
       ok: false,
       error:
-        error?.message ||
-        "Could not contact judging server.",
+        error.message ||
+        "Judging backend failed.",
     });
   }
 }
