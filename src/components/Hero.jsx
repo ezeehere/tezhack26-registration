@@ -152,9 +152,9 @@ function Hero() {
           <div className="th26-hero-action-row">
             <Link
               className="th26-hero-register-button"
-              to="/problem-statements"
+              to="/final"
             >
-              <span>Problem Statements</span>
+              <span>The Final Commit</span>
             </Link>
 
             <Link
