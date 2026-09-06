@@ -3,7 +3,35 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/judging",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/judging/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/problem-statements",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/challenge-jar",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/team-caller",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/team-allocations",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/register",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/final",
       "destination": "/index.html"
     }
   ]
