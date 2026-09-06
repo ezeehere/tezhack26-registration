@@ -179,7 +179,7 @@ export default function FinalCommit() {
             <h2>TODAY'S AGENDA</h2>
 
             <p>
-              Everything happening during The Final Commit.
+              Everything happening during The Final Commit,
             </p>
           </div>
 
@@ -390,6 +390,494 @@ export default function FinalCommit() {
 
 
       {/* COMING SOON */}
+
+      <section className="fc-judging-section">
+
+  <div className="fc-section-head">
+    <span>05 / FINAL JUDGING</span>
+
+    <h2>
+      JUDGING
+      <strong> STRUCTURE</strong>
+    </h2>
+
+    <p>
+      Two panels will judge simultaneously.
+      All teams will be ranked together after
+      panel normalization.
+    </p>
+  </div>
+
+
+  {/* PANEL SPLIT */}
+
+  <div className="fc-panel-grid">
+
+    <article className="fc-panel-card">
+
+      <span className="fc-card-tag">
+        PANEL A
+      </span>
+
+      <h3>13 TEAMS</h3>
+
+      <div className="fc-panel-counts">
+        <strong>5 ML</strong>
+        <strong>8 WEB</strong>
+      </div>
+
+      <p>
+        Panel A will include the judge with
+        stronger ML knowledge.
+      </p>
+
+      
+    </article>
+
+
+    <article className="fc-panel-card fc-panel-card-yellow">
+
+      <span className="fc-card-tag">
+        PANEL B
+      </span>
+
+      <h3>14 TEAMS</h3>
+
+      <div className="fc-panel-counts">
+        <strong>14 WEB</strong>
+      </div>
+
+      <p>
+        Panel B will evaluate the remaining
+        Web teams using the same marking
+        criteria.
+      </p>
+
+      
+
+    </article>
+
+  </div>
+
+
+  {/* FLOATING JUDGE */}
+
+  <article className="fc-floating-card">
+
+    <div>
+      <span>7TH JUDGE</span>
+      <h3>COMMON / FLOATING JUDGE</h3>
+    </div>
+
+    <div className="fc-floating-points">
+      <p>Observe both panels</p>
+      <p>Assist with difficult technical cases</p>
+      <p>Check scoring consistency</p>
+      <p>Help resolve close scores or ties</p>
+    </div>
+
+  </article>
+
+
+  {/* 8 MIN FLOW */}
+
+  <div className="fc-subsection">
+
+    <div className="fc-subsection-title">
+      <span>01</span>
+
+      <div>
+        <p>Per team</p>
+        <h3>8-MINUTE JUDGING FLOW</h3>
+      </div>
+    </div>
+
+
+    <div className="fc-time-grid">
+
+      <article>
+        <strong>00-04</strong>
+        <span>MIN</span>
+        <h4>PPT</h4>
+        <p>
+          Problem, approach and solution.
+        </p>
+      </article>
+
+      <article>
+        <strong>04-06</strong>
+        <span>MIN</span>
+        <h4>DEMO</h4>
+        <p>
+          Working project demonstration.
+        </p>
+      </article>
+
+      <article>
+        <strong>06-08</strong>
+        <span>MIN</span>
+        <h4>Q&A</h4>
+        <p>
+          Questions from the judges.
+        </p>
+      </article>
+
+    </div>
+
+
+    <div className="fc-note-strip">
+      Teams must keep their PPT and project
+      ready before their judging slot.
+    </div>
+
+  </div>
+
+
+  {/* MARKING */}
+
+  <div className="fc-subsection">
+
+    <div className="fc-subsection-title">
+      <span>02</span>
+
+      <div>
+        <p>Same rubric for both panels</p>
+        <h3>JUDGING CRITERIA</h3>
+      </div>
+    </div>
+
+
+    <div className="fc-marking-table">
+
+      <div className="fc-mark-row">
+        <span>
+          Problem Understanding & Relevance
+        </span>
+        <strong>10</strong>
+      </div>
+
+      <div className="fc-mark-row">
+        <span>
+          Solution & Innovation
+        </span>
+        <strong>15</strong>
+      </div>
+
+      <div className="fc-mark-row fc-mark-highlight">
+        <span>
+          Challenge Integration
+        </span>
+        <strong>15</strong>
+      </div>
+
+      <div className="fc-mark-row">
+        <span>
+          Technical Implementation
+        </span>
+        <strong>25</strong>
+      </div>
+
+      <div className="fc-mark-row">
+        <span>
+          Working Prototype & Completeness
+        </span>
+        <strong>20</strong>
+      </div>
+
+      <div className="fc-mark-row">
+        <span>
+          Practical Usefulness
+        </span>
+        <strong>5</strong>
+      </div>
+
+      <div className="fc-mark-row">
+        <span>
+          Presentation & Q&A
+        </span>
+        <strong>10</strong>
+      </div>
+
+      <div className="fc-mark-row fc-mark-total">
+        <span>TOTAL</span>
+        <strong>100</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  {/* CRITERIA EXPLANATION */}
+
+  <div className="fc-criteria-grid">
+
+    <article>
+      <span>01 / 10</span>
+      <h4>PROBLEM UNDERSTANDING</h4>
+      <p>
+        Does the team clearly understand the
+        problem and its relevance?
+      </p>
+    </article>
+
+    <article>
+      <span>02 / 15</span>
+      <h4>SOLUTION & INNOVATION</h4>
+      <p>
+        Is the solution meaningful and more
+        than a very basic implementation?
+      </p>
+    </article>
+
+    <article>
+      <span>03 / 15</span>
+      <h4>CHALLENGE INTEGRATION</h4>
+      <p>
+        Was the assigned random challenge
+        genuinely incorporated into the
+        solution?
+      </p>
+    </article>
+
+    <article>
+      <span>04 / 25</span>
+      <h4>TECHNICAL IMPLEMENTATION</h4>
+      <p>
+        Judges will consider architecture,
+        logic, integrations, database,
+        APIs, model work and technical quality
+        where applicable.
+      </p>
+    </article>
+
+    <article>
+      <span>05 / 20</span>
+      <h4>WORKING PROTOTYPE</h4>
+      <p>
+        Does the actual project work?
+        Strong slides alone should not receive
+        high marks.
+      </p>
+    </article>
+
+    <article>
+      <span>06 / 5</span>
+      <h4>PRACTICAL USEFULNESS</h4>
+      <p>
+        Could the proposed solution provide
+        real practical value?
+      </p>
+    </article>
+
+    <article>
+      <span>07 / 10</span>
+      <h4>PRESENTATION & Q&A</h4>
+      <p>
+        Can the team clearly explain its work
+        and answer technical questions?
+      </p>
+    </article>
+
+  </div>
+
+
+  {/* INDIVIDUAL JUDGE SCORING */}
+
+  <div className="fc-subsection">
+
+    <div className="fc-subsection-title">
+      <span>03</span>
+
+      <div>
+        <p>Independent scoring</p>
+        <h3>TEAM RAW SCORE</h3>
+      </div>
+    </div>
+
+
+    <div className="fc-score-example">
+
+      <div>
+        <span>JUDGE 01</span>
+        <strong>82</strong>
+      </div>
+
+      <div>
+        <span>JUDGE 02</span>
+        <strong>86</strong>
+      </div>
+
+      <div>
+        <span>JUDGE 03</span>
+        <strong>79</strong>
+      </div>
+
+      <div className="fc-score-final">
+        <span>RAW TEAM SCORE</span>
+        <strong>82.33</strong>
+      </div>
+
+    </div>
+
+
+    <code className="fc-formula">
+      (82 + 86 + 79) / 3 = 82.33
+    </code>
+
+  </div>
+
+
+  {/* NORMALIZATION */}
+
+  <div className="fc-subsection">
+
+    <div className="fc-subsection-title">
+      <span>04</span>
+
+      <div>
+        <p>Cross-panel scoring</p>
+        <h3>NORMALIZATION</h3>
+      </div>
+    </div>
+
+
+    <p className="fc-normalization-intro">
+      Since Panel A contains all ML teams,
+      overall panel averages will not be used.
+      Web teams present in both panels will act
+      as the common scoring reference.
+    </p>
+
+
+    <div className="fc-normalization-grid">
+
+      <article>
+        <span>PANEL A WEB AVG</span>
+        <strong>74</strong>
+      </article>
+
+      <article>
+        <span>PANEL B WEB AVG</span>
+        <strong>80</strong>
+      </article>
+
+      <article className="fc-reference-card">
+        <span>REFERENCE AVG</span>
+        <strong>77</strong>
+      </article>
+
+    </div>
+
+
+    <div className="fc-adjustment-grid">
+
+      <article>
+        <span>PANEL A</span>
+        <h4>+3</h4>
+        <p>
+          77 - 74 = +3
+        </p>
+      </article>
+
+      <article>
+        <span>PANEL B</span>
+        <h4>-3</h4>
+        <p>
+          77 - 80 = -3
+        </p>
+      </article>
+
+    </div>
+
+
+    <div className="fc-normalized-example">
+
+      <article>
+        <span>ML TEAM A03</span>
+        <strong>84 + 3 = 87</strong>
+      </article>
+
+      <article>
+        <span>WEB TEAM B09</span>
+        <strong>88 - 3 = 85</strong>
+      </article>
+
+    </div>
+
+  </div>
+
+
+  {/* FINAL RANKING */}
+
+  <div className="fc-subsection">
+
+    <div className="fc-subsection-title">
+      <span>05</span>
+
+      <div>
+        <p>After normalization</p>
+        <h3>FINAL RANKING</h3>
+      </div>
+    </div>
+
+
+    <div className="fc-ranking-demo">
+
+      <div>
+        <b>#01</b>
+        <span>TEAM X</span>
+        <small>ML / PANEL A</small>
+        <strong>87</strong>
+      </div>
+
+      <div>
+        <b>#02</b>
+        <span>TEAM Y</span>
+        <small>WEB / PANEL B</small>
+        <strong>86</strong>
+      </div>
+
+      <div>
+        <b>#03</b>
+        <span>TEAM Z</span>
+        <small>WEB / PANEL A</small>
+        <strong>85</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  {/* TIES */}
+
+  <div className="fc-tie-card">
+
+    <span>TIE BREAKING ORDER</span>
+
+    <ol>
+      <li>
+        Higher Technical Implementation
+      </li>
+
+      <li>
+        Higher Working Prototype score
+      </li>
+
+      <li>
+        Higher Challenge Integration score
+      </li>
+
+      <li>
+        Floating judge and panel judges take
+        the final call if still tied
+      </li>
+    </ol>
+
+  </div>
+
+</section>
       <section className="final-coming">
 
         <span>05 / NEXT UPDATE</span>

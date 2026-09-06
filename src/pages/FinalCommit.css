@@ -1994,3 +1994,1182 @@
   }
 
 }
+/* =========================================================
+   TEZHACK FINAL JUDGING
+   FINAL POLISHED VERSION
+========================================================= */
+
+.fc-judging-section {
+  width: min(1360px, calc(100% - 32px));
+  margin: 34px auto 70px;
+
+  padding: clamp(28px, 4vw, 52px);
+
+  color: #123c4b;
+
+  background-color: #f2ecdf;
+
+  background-image:
+    radial-gradient(
+      rgba(40, 124, 123, 0.2) 0.7px,
+      transparent 0.7px
+    );
+
+  background-size: 8px 8px;
+
+  border: 2px solid #082938;
+
+  border-radius:
+    32px 18px 36px 22px;
+
+  box-shadow:
+    10px 12px 0 #082938;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.fc-judging-section .fc-section-head {
+  margin: 0 0 34px;
+}
+
+
+.fc-judging-section .fc-section-head > span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #287c7b;
+
+  font-family: "Kalam", cursive;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+
+.fc-judging-section .fc-section-head h2 {
+  margin: 0;
+
+  color: #082938;
+
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+}
+
+
+.fc-judging-section .fc-section-head h2 strong {
+  display: block;
+
+  color: #e3aa2d;
+
+  font: inherit;
+}
+
+
+.fc-judging-section .fc-section-head > p {
+  max-width: 720px;
+
+  margin: 20px 0 0;
+
+  color: #496570;
+
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+
+
+/* =========================================================
+   PANEL A + B
+========================================================= */
+
+.fc-judging-section .fc-panel-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+.fc-judging-section .fc-panel-card {
+  position: relative;
+
+  min-height: 0;
+
+  padding:
+    clamp(22px, 3vw, 30px);
+
+  border: 2px solid #082938;
+
+  border-radius:
+    18px 32px 17px 27px;
+
+  background: #faf6ed;
+
+  box-shadow:
+    6px 7px 0 #b9cec3;
+}
+
+
+.fc-judging-section
+.fc-panel-card-yellow {
+  box-shadow:
+    6px 7px 0 #e3aa2d;
+}
+
+
+.fc-judging-section .fc-card-tag {
+  display: inline-block;
+
+  padding: 7px 11px;
+
+  color: #faf6ed;
+  background: #287c7b;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 0.67rem;
+  font-weight: 900;
+
+  letter-spacing: 0.04em;
+}
+
+
+.fc-judging-section .fc-panel-card h3 {
+  margin: 18px 0 14px;
+
+  color: #082938;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(2.1rem, 4.4vw, 3.8rem);
+
+  line-height: 0.95;
+}
+
+
+.fc-judging-section .fc-panel-counts {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-bottom: 17px;
+}
+
+
+.fc-judging-section
+.fc-panel-counts strong {
+  padding: 7px 11px;
+
+  color: #082938;
+  background: #f2ecdf;
+
+  border: 2px solid #082938;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+
+.fc-judging-section
+.fc-panel-card > p {
+  max-width: 530px;
+
+  margin: 0;
+
+  color: #526a71;
+
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
+
+
+.fc-judging-section
+.fc-panel-judges {
+  margin-top: 20px;
+  padding-top: 17px;
+
+  border-top:
+    1px dashed #8badad;
+}
+
+
+.fc-judging-section
+.fc-panel-judges > span {
+  color: #082938;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 0.67rem;
+  font-weight: 900;
+}
+
+
+.fc-judging-section
+.fc-panel-judges ul {
+  margin: 10px 0 0;
+  padding-left: 19px;
+
+  color: #123c4b;
+
+  line-height: 1.75;
+}
+
+
+
+/* =========================================================
+   FLOATING JUDGE
+========================================================= */
+
+.fc-judging-section
+.fc-floating-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(250px, 0.75fr)
+    minmax(0, 1.25fr);
+
+  align-items: center;
+
+  gap: 30px;
+
+  margin-top: 24px;
+  padding: 24px 28px;
+
+  color: #082938;
+  background: #e3aa2d;
+
+  border: 2px solid #082938;
+
+  border-radius:
+    14px 28px 13px 22px;
+
+  box-shadow:
+    7px 8px 0 #287c7b;
+}
+
+
+.fc-judging-section
+.fc-floating-card > div:first-child > span {
+  color: #082938;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 0.66rem;
+  font-weight: 900;
+}
+
+
+.fc-judging-section
+.fc-floating-card h3 {
+  margin: 7px 0 0;
+
+  color: #082938;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(1.5rem, 3vw, 2.3rem);
+
+  line-height: 1;
+}
+
+
+.fc-judging-section
+.fc-floating-points {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 9px;
+}
+
+
+.fc-judging-section
+.fc-floating-points p {
+  margin: 0;
+  padding: 10px 12px;
+
+  color: #123c4b;
+
+  background:
+    rgba(250, 246, 237, 0.52);
+
+  border: 1px solid #082938;
+
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+
+
+/* =========================================================
+   SUBSECTIONS
+========================================================= */
+
+.fc-judging-section
+.fc-subsection {
+  margin-top: 36px;
+  padding-top: 32px;
+
+  border-top:
+    2px dashed #90b0ad;
+}
+
+
+.fc-judging-section
+.fc-subsection-title {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 16px;
+
+  margin-bottom: 22px;
+}
+
+
+.fc-judging-section
+.fc-subsection-title > span {
+  display: grid;
+
+  flex: 0 0 48px;
+
+  width: 48px;
+  height: 45px;
+
+  place-items: center;
+
+  color: #082938;
+  background: #e3aa2d;
+
+  border: 2px solid #082938;
+
+  box-shadow:
+    3px 4px 0 #082938;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 0.8rem;
+  font-weight: 900;
+
+  transform: rotate(-2deg);
+}
+
+
+.fc-judging-section
+.fc-subsection-title p {
+  margin: 0 0 2px;
+
+  color: #287c7b;
+
+  font-family:
+    "Kalam",
+    cursive;
+
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+
+.fc-judging-section
+.fc-subsection-title h3 {
+  margin: 0;
+
+  color: #082938;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(1.8rem, 4vw, 3rem);
+
+  line-height: 1;
+}
+
+
+
+/* =========================================================
+   8 MINUTE FLOW
+========================================================= */
+
+.fc-judging-section
+.fc-time-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+
+.fc-judging-section
+.fc-time-grid article {
+  min-width: 0;
+
+  padding: 22px 20px;
+
+  color: #082938;
+  background: #faf6ed;
+
+  border: 2px solid #082938;
+
+  border-radius:
+    12px 20px 11px 17px;
+}
+
+
+.fc-judging-section
+.fc-time-grid article:nth-child(2) {
+  background: #b9cec3;
+}
+
+
+.fc-judging-section
+.fc-time-grid article:nth-child(3) {
+  background: #e3aa2d;
+}
+
+
+.fc-judging-section
+.fc-time-grid strong {
+  display: inline-block;
+
+  color: #082938;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(1.8rem, 3vw, 2.7rem);
+
+  line-height: 1;
+}
+
+
+.fc-judging-section
+.fc-time-grid span {
+  display: block;
+
+  margin-top: 7px;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 0.6rem;
+  font-weight: 900;
+}
+
+
+.fc-judging-section
+.fc-time-grid h4 {
+  margin: 17px 0 6px;
+
+  color: #082938;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size: 1.2rem;
+}
+
+
+.fc-judging-section
+.fc-time-grid p {
+  margin: 0;
+
+  color: #355a65;
+
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+
+.fc-judging-section
+.fc-note-strip {
+  margin-top: 12px;
+
+  padding: 12px 15px;
+
+  color: #082938;
+  background: #faf6ed;
+
+  border-left:
+    5px solid #e3aa2d;
+
+  font-size: 0.87rem;
+  font-weight: 750;
+}
+
+
+
+/* =========================================================
+   MARKING TABLE
+========================================================= */
+
+.fc-judging-section
+.fc-marking-table {
+  overflow: hidden;
+
+  border: 2px solid #082938;
+
+  border-radius:
+    14px 20px 13px 18px;
+
+  background: #faf6ed;
+}
+
+
+.fc-judging-section
+.fc-mark-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr) 92px;
+
+  align-items: stretch;
+
+  border-bottom:
+    1px solid #b9cec3;
+}
+
+
+.fc-judging-section
+.fc-mark-row:last-child {
+  border-bottom: 0;
+}
+
+
+.fc-judging-section
+.fc-mark-row span {
+  padding: 13px 16px;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+
+.fc-judging-section
+.fc-mark-row strong {
+  display: grid;
+
+  place-items: center;
+
+  padding: 13px;
+
+  color: #082938;
+
+  border-left:
+    2px solid #082938;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size: 1.15rem;
+}
+
+
+.fc-judging-section
+.fc-mark-highlight {
+  background: #b9cec3;
+}
+
+
+.fc-judging-section
+.fc-mark-total {
+  color: #faf6ed;
+  background: #082938;
+}
+
+
+.fc-judging-section
+.fc-mark-total strong {
+  color: #faf6ed;
+
+  border-left:
+    2px solid #faf6ed;
+}
+
+
+
+/* =========================================================
+   CRITERIA DETAILS
+========================================================= */
+
+.fc-judging-section
+.fc-criteria-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 11px;
+
+  margin-top: 18px;
+}
+
+
+.fc-judging-section
+.fc-criteria-grid article {
+  min-width: 0;
+
+  padding: 17px;
+
+  border: 2px solid #082938;
+
+  border-radius:
+    11px 18px 10px 15px;
+
+  background: #faf6ed;
+}
+
+
+.fc-judging-section
+.fc-criteria-grid article:nth-child(3) {
+  background: #b9cec3;
+}
+
+
+.fc-judging-section
+.fc-criteria-grid article:nth-child(4) {
+  background: #f2ecdf;
+}
+
+
+.fc-judging-section
+.fc-criteria-grid span {
+  color: #287c7b;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 0.62rem;
+  font-weight: 900;
+}
+
+
+.fc-judging-section
+.fc-criteria-grid h4 {
+  margin: 7px 0;
+
+  color: #082938;
+
+  font-family:
+    "Bricolage Grotesque",
+    sans-serif;
+
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+
+.fc-judging-section
+.fc-criteria-grid p {
+  margin: 0;
+
+  color: #526a71;
+
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+
+
+/* =========================================================
+   INDIVIDUAL JUDGE SCORE EXAMPLE
+========================================================= */
+
+.fc-judging-section
+.fc-score-example {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr))
+    minmax(190px, 1.2fr);
+
+  gap: 10px;
+}
+
+
+.fc-judging-section
+.fc-score-example > div {
+  padding: 17px;
+
+  border: 2px solid #082938;
+
+  background: #faf6ed;
+}
+
+
+.fc-judging-section
+.fc-score-example span {
+  display: block;
+
+  color: #287c7b;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 0.6rem;
+  font-weight: 900;
+}
+
+
+.fc-judging-section
+.fc-score-example strong {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #082938;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size: 2rem;
+}
+
+
+.fc-judging-section
+.fc-score-example .fc-score-final {
+  background: #e3aa2d;
+}
+
+
+.fc-judging-section
+.fc-formula {
+  display: inline-block;
+
+  margin-top: 11px;
+  padding: 8px 11px;
+
+  color: #faf6ed;
+  background: #082938;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 0.74rem;
+}
+
+
+
+/* =========================================================
+   NORMALIZATION
+========================================================= */
+
+.fc-judging-section
+.fc-normalization-intro {
+  max-width: 800px;
+
+  margin: -4px 0 20px;
+
+  color: #526a71;
+
+  line-height: 1.65;
+}
+
+
+.fc-judging-section
+.fc-normalization-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+
+.fc-judging-section
+.fc-adjustment-grid,
+.fc-judging-section
+.fc-normalized-example {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+
+.fc-judging-section
+.fc-normalization-grid article,
+.fc-judging-section
+.fc-adjustment-grid article,
+.fc-judging-section
+.fc-normalized-example article {
+  padding: 17px;
+
+  border: 2px solid #082938;
+
+  background: #faf6ed;
+}
+
+
+.fc-judging-section
+.fc-reference-card {
+  background: #e3aa2d !important;
+}
+
+
+.fc-judging-section
+.fc-normalization-grid span,
+.fc-judging-section
+.fc-adjustment-grid span,
+.fc-judging-section
+.fc-normalized-example span {
+  display: block;
+
+  color: #287c7b;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 0.62rem;
+  font-weight: 900;
+}
+
+
+.fc-judging-section
+.fc-normalization-grid strong,
+.fc-judging-section
+.fc-adjustment-grid h4,
+.fc-judging-section
+.fc-normalized-example strong {
+  display: block;
+
+  margin: 8px 0 0;
+
+  color: #082938;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size:
+    clamp(1.7rem, 3vw, 2.4rem);
+}
+
+
+
+/* =========================================================
+   FINAL RANKING DEMO
+========================================================= */
+
+.fc-judging-section
+.fc-ranking-demo {
+  display: grid;
+
+  gap: 8px;
+}
+
+
+.fc-judging-section
+.fc-ranking-demo > div {
+  display: grid;
+
+  grid-template-columns:
+    65px
+    minmax(150px, 1fr)
+    minmax(150px, 1fr)
+    80px;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 15px;
+
+  border: 2px solid #082938;
+
+  background: #faf6ed;
+}
+
+
+.fc-judging-section
+.fc-ranking-demo > div:first-child {
+  background: #e3aa2d;
+}
+
+
+.fc-judging-section
+.fc-ranking-demo b {
+  color: #287c7b;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+}
+
+
+.fc-judging-section
+.fc-ranking-demo span {
+  color: #082938;
+
+  font-weight: 800;
+}
+
+
+.fc-judging-section
+.fc-ranking-demo small {
+  color: #526a71;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size: 0.66rem;
+}
+
+
+.fc-judging-section
+.fc-ranking-demo strong {
+  color: #082938;
+
+  text-align: right;
+
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size: 1.4rem;
+}
+
+
+
+/* =========================================================
+   TIE RULE
+========================================================= */
+
+.fc-judging-section
+.fc-tie-card {
+  margin-top: 32px;
+  padding: 22px 24px;
+
+  color: #082938;
+  background: #b9cec3;
+
+  border: 2px solid #082938;
+
+  border-radius:
+    14px 25px 13px 21px;
+
+  box-shadow:
+    6px 7px 0 #082938;
+}
+
+
+.fc-judging-section
+.fc-tie-card > span {
+  font-family:
+    "Archivo Black",
+    sans-serif;
+
+  font-size: 1.2rem;
+}
+
+
+.fc-judging-section
+.fc-tie-card ol {
+  margin: 14px 0 0;
+  padding-left: 21px;
+
+  line-height: 1.85;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .fc-judging-section
+  .fc-criteria-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+
+  .fc-judging-section
+  .fc-floating-card {
+    grid-template-columns: 1fr;
+  }
+
+
+  .fc-judging-section
+  .fc-score-example {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .fc-judging-section {
+    width:
+      calc(100% - 16px);
+
+    margin-top: 18px;
+    margin-bottom: 35px;
+
+    padding: 22px 15px;
+
+    border-radius:
+      23px 12px 26px 16px;
+
+    box-shadow:
+      6px 7px 0 #082938;
+  }
+
+
+  .fc-judging-section
+  .fc-section-head h2 {
+    font-size:
+      clamp(
+        2.5rem,
+        14vw,
+        4rem
+      );
+  }
+
+
+  .fc-judging-section
+  .fc-panel-grid,
+
+  .fc-judging-section
+  .fc-time-grid,
+
+  .fc-judging-section
+  .fc-criteria-grid,
+
+  .fc-judging-section
+  .fc-score-example,
+
+  .fc-judging-section
+  .fc-normalization-grid,
+
+  .fc-judging-section
+  .fc-adjustment-grid,
+
+  .fc-judging-section
+  .fc-normalized-example {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .fc-judging-section
+  .fc-floating-points {
+    grid-template-columns: 1fr;
+  }
+
+
+  .fc-judging-section
+  .fc-panel-card {
+    padding: 20px 17px;
+  }
+
+
+  .fc-judging-section
+  .fc-floating-card {
+    padding: 20px 17px;
+  }
+
+
+  .fc-judging-section
+  .fc-mark-row {
+    grid-template-columns:
+      minmax(0, 1fr) 63px;
+  }
+
+
+  .fc-judging-section
+  .fc-mark-row span {
+    padding: 11px;
+    font-size: 0.78rem;
+  }
+
+
+  .fc-judging-section
+  .fc-mark-row strong {
+    padding: 10px 6px;
+  }
+
+
+  .fc-judging-section
+  .fc-ranking-demo > div {
+    grid-template-columns:
+      50px 1fr 65px;
+
+    gap: 8px;
+
+    padding: 11px;
+  }
+
+
+  .fc-judging-section
+  .fc-ranking-demo small {
+    grid-column: 2;
+  }
+
+
+  .fc-judging-section
+  .fc-ranking-demo strong {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+
+}
