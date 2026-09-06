@@ -14,8 +14,7 @@ import {
 
 import {
   judgingApi,
-} from "../../api/judging";
-
+} from "../services/judgingApi";
 import "./judging.css";
 
 
